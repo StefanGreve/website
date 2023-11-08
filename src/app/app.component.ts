@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Link } from './interfaces/link';
+import { ThemeSwitcherService } from './services/theme-switcher.service';
+import { Theme } from './enums/theme';
 
 @Component({
   selector: 'app-root',
@@ -24,4 +26,9 @@ export class AppComponent {
       external: true
     }
   ]
+
+  constructor(private themeService: ThemeSwitcherService) {
+    console.log(themeService.getActiveTheme);
+    themeService.setTheme(Theme.Dark);
+  }
 }
