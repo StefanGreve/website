@@ -1,0 +1,7 @@
+@use "styles/typography.scss" as typo;
+
+.title {
+  @include typo.h1;
+  text-align: center;
+  margin-top: .5em;
+}

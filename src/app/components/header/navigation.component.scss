@@ -1,4 +1,5 @@
-@use "../../theme.scss" as theme;
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/typography.scss" as typo;
 
 nav {
   $defaultColor: theme.$onSurfaceColor;
@@ -29,9 +30,9 @@ nav {
       }
 
       & a {
+        @include typo.a;
         display: block;
         padding: .5em 1em;
-        text-decoration: none;
         color: $defaultColor;
         background-color: $defaultBackgroundColor;
         border-width: 1px;
