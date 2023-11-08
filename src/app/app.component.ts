@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Link } from './interfaces/link';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'website';
+  title: string = 'Hello, World!';
+  links: Link[] = [
+    {
+      label: "test1",
+      href: "#"
+    },
+    {
+      label: "test2",
+      href: "#",
+      disabled: true
+    },
+    {
+      label: "test3",
+      href: "httpsL//google.com",
+      external: true
+    }
+  ]
 }

@@ -1,0 +1,14 @@
+<nav role="navigation">
+  <ul>
+    <li *ngFor="let link of links">
+      <a
+        [attr.href]="link.href"
+        [attr.target]="link.external ? '_blank' : '_self'"
+        [attr.rel]="link.external ? 'noreferrer' : null"
+        [attr.aria-disabled]="link.disabled"
+      >
+        {{ link.label }}
+      </a>
+    </li>
+  </ul>
+</nav>
