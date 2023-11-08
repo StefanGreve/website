@@ -1,4 +1,9 @@
+@use "../../theme.scss" as theme;
+
 nav {
+  $defaultColor: theme.$onSurfaceColor;
+  $defaultBackgroundColor: theme.$surfaceColor;
+
   all: unset;
   display: flex;
   justify-content: center;
@@ -27,18 +32,17 @@ nav {
         display: block;
         padding: .5em 1em;
         text-decoration: none;
-        // TODO: color theming
-        color: black;
-        background-color: gray;
+        color: $defaultColor;
+        background-color: $defaultBackgroundColor;
         border-width: 1px;
         text-align: center;
         min-width: 80px;
         cursor: pointer;
+        user-select: none;
 
         &:hover {
-          // TODO: color theming
-          background-color: blue;
-          color: white;
+          background-color: theme.$primaryColor;
+          color: theme.$surfaceColor;
           transition: 0.2s ease-in-out;
         }
 
@@ -46,9 +50,8 @@ nav {
           opacity: 50%;
 
           &:hover {
-            // TODO: color theming
-            color: black;
-            background-color: gray;
+            color: $defaultColor;
+            background-color: $defaultBackgroundColor;
             cursor: not-allowed;
           }
         }

@@ -2,7 +2,7 @@
   <ul>
     <li *ngFor="let link of links">
       <a
-        [attr.href]="link.href"
+        [attr.href]="link.disabled ? null : link.href"
         [attr.target]="link.external ? '_blank' : '_self'"
         [attr.rel]="link.external ? 'noreferrer' : null"
         [attr.aria-disabled]="link.disabled"

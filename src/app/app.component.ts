@@ -29,6 +29,5 @@ export class AppComponent {
 
   constructor(private themeService: ThemeSwitcherService) {
     console.log(themeService.getActiveTheme);
-    themeService.setTheme(Theme.Dark);
   }
 }

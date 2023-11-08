@@ -1,0 +1,22 @@
+// default colors
+$neutralColor: var(--neutral-color);
+$neutralColorMuted: var(--neutral-color-muted);
+$neutralColorAlt: var(--neutral-color-alt);
+// accent colors
+$primaryColor: var(--primary-color);
+$onPrimaryColor: var(--on-primary-color);
+$secondaryColor: var(--secondary-color);
+$onSecondaryColor: var(--on-secondary-color);
+// building colors
+$backgroundColor: var(--background-color);
+$onBackgroundColor: var(--on-background-color);
+$surfaceColor: var(--surface-color);
+$onSurfaceColor: var(--on-surface-color);
+// status colors
+$successColor: var(--success-color);
+$infoColor: var(--info-color);
+$warningColor: var(--warning-color);
+$errorColor: var(--error-color);
+// miscellaneous colors
+$scrollbarColor: var(--scrollbar-color);
+$scrollbarTrack: var(--scrollbar-track);
