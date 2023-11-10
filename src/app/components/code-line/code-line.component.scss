@@ -1,0 +1,48 @@
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/typography.scss" as typo;
+
+div.inline-code {
+  display: flex;
+  flex-direction: row;
+  height: 42px;
+  align-items: center;
+  background-color: theme.$surfaceColor;
+  border-radius: 6px;
+  padding: 6px;
+  margin: 16px 0;
+
+  span {
+    @include typo.code;
+    width: 100%;
+    line-height: 1.45;
+    color: theme.$onSurfaceColor;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+
+  button {
+    height: 36px;
+    width: 36px;
+    text-align: center;
+    border: 1px solid theme.$neutralColorMuted;
+    border-radius: 6px;
+    background-color: theme.$surfaceColor;
+    cursor: pointer;
+
+    svg {
+      fill: theme.$onSurfaceColor;
+    }
+
+    &:hover {
+      background-color: theme.$backgroundColor;
+    }
+
+    &.active {
+      border-color: theme.$successColor;
+
+      svg {
+        fill: theme.$successColor;
+      }
+    }
+  }
+}
