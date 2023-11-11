@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Link } from './interfaces/link';
 import { ThemeSwitcherService } from './services/theme-switcher.service';
 import { Theme } from './enums/theme';
+import { Icon } from './enums/icon';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,12 @@ import { Theme } from './enums/theme';
 })
 export class AppComponent {
   title: string = 'Hello, World!';
+
+  icons: Icon[] = [
+    Icon.Copy,
+    Icon.CheckMark,
+  ];
+
   links: Link[] = [
     {
       label: "test1",

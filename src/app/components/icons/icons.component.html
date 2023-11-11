@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <symbol *ngFor="let icon of icons" [id]="Icon.getId(icon)" viewBox="0 0 448 512">
+      <path [attr.d]="Icon.getPath(icon)" />
+    </symbol>
+  </defs>
+</svg>
