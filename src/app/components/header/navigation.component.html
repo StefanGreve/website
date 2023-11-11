@@ -1,14 +1,27 @@
 <nav role="navigation">
   <ul>
-    <li *ngFor="let link of links">
-      <a
-        [attr.href]="link.disabled ? null : link.href"
-        [attr.target]="link.external ? '_blank' : '_self'"
-        [attr.rel]="link.external ? 'noreferrer' : null"
-        [attr.aria-disabled]="link.disabled"
-      >
-        {{ link.label }}
-      </a>
+    <li *ngFor="let item of items">
+      @if (item.href) {
+        <a
+          [attr.href]="item?.disabled ? null : item.href"
+          [attr.target]="item?.external ? '_blank' : '_self'"
+          [attr.rel]="item?.external ? 'noreferrer' : null"
+          [attr.hidden]="item?.hidden"
+          [attr.aria-disabled]="item?.disabled"
+        >
+          {{ item.label }}
+        </a>
+      } @else {
+        <a
+          role="button"
+          tabindex="0"
+          [attr.hidden]="item?.hidden"
+          [attr.aria-disabled]="item?.disabled"
+          (click)="item?.action()"
+        >
+          {{ item.label }}
+        </a>
+      }
     </li>
   </ul>
 </nav>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Link } from './interfaces/link';
 import { ThemeSwitcherService } from './services/theme-switcher.service';
 import { Theme } from './enums/theme';
 import { Icon } from './enums/icon';
+import { Clickable } from './interfaces/clickable';
 
 @Component({
   selector: 'app-root',
@@ -17,24 +17,32 @@ export class AppComponent {
     Icon.CheckMark,
   ];
 
-  links: Link[] = [
+  items: Clickable[] = [
     {
-      label: "test1",
-      href: "#"
-    },
-    {
-      label: "test2",
+      label: "Login",
       href: "#",
-      disabled: true
+      disabled: true,
     },
     {
-      label: "test3",
-      href: "httpsL//google.com",
-      external: true
+      label: "Archive",
+      href: "https://archive.stefangreve.com/",
+      external: true,
+    },
+    {
+      label: "Settings",
+      action: this.openSettings,
     }
   ]
 
   constructor(private themeService: ThemeSwitcherService) {
     console.log(themeService.getActiveTheme);
+  }
+
+  openSettings() {
+    alert("open settings dialog");
+  }
+
+  closeSettings() {
+    console.log("close settings dialog");
   }
 }

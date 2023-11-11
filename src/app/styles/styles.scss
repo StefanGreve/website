@@ -1,3 +1,4 @@
+@use "theme.scss" as theme;
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@400;700&display=swap');
 
 :root {
@@ -11,4 +12,14 @@ html {
 
 body {
   margin: unset;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  z-index: 1;
+  position: relative;
+  outline: theme.$infoColor solid 3px;
 }
