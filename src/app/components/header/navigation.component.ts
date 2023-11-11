@@ -12,5 +12,7 @@ export class NavigationComponent {
 
   constructor(){}
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    this.items = this.items?.filter(item => !item?.hidden);
+  }
 }

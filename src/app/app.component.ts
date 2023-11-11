@@ -29,6 +29,10 @@ export class AppComponent {
       external: true,
     },
     {
+      label: "WIP",
+      hidden: true,
+    },
+    {
       label: "Settings",
       action: this.openSettings,
     }
