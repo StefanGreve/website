@@ -6,6 +6,7 @@ import { NavigationComponent } from './components/header/navigation.component';
 import { CodeLineComponent } from './components/code-line/code-line.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { SwitchComponent } from './components/switch/switch.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     CodeLineComponent,
     DialogComponent,
     IconsComponent,
+    SwitchComponent,
   ],
   imports: [
     BrowserModule

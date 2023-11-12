@@ -1,16 +1,15 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { Icon } from './enums/icon';
 import { Theme } from './enums/theme';
-import { Clickable } from './interfaces/clickable';
+import { NavigationItem } from './interfaces/navigation-item';
 import { ThemeSwitcherService } from './services/theme-switcher.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  // encapsulation: ViewEncapsulation.None
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   icons: Icon[] = [
@@ -46,7 +45,7 @@ export class AppComponent {
     this.themeService.setTheme(newTheme);
   }
 
-  items: Clickable[] = [
+  items: NavigationItem[] = [
     {
       label: "Login",
       href: "#",

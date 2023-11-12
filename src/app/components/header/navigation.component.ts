@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Clickable } from 'src/app/interfaces/clickable';
+import { NavigationItem } from 'src/app/interfaces/navigation-item';
 
 @Component({
   selector: 'adv-navigation',
@@ -8,7 +8,7 @@ import { Clickable } from 'src/app/interfaces/clickable';
 })
 export class NavigationComponent {
   @Input()
-  items: Clickable[] | undefined;
+  items: NavigationItem[] | undefined;
 
   constructor(){}
 
