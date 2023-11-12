@@ -1,21 +1,50 @@
-import { Component } from '@angular/core';
-import { ThemeSwitcherService } from './services/theme-switcher.service';
-import { Theme } from './enums/theme';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { Icon } from './enums/icon';
+import { Theme } from './enums/theme';
 import { Clickable } from './interfaces/clickable';
+import { ThemeSwitcherService } from './services/theme-switcher.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title: string = 'Hello, World!';
-
   icons: Icon[] = [
     Icon.Copy,
     Icon.CheckMark,
   ];
+
+  @ViewChild(DialogComponent, {static: false})
+  settingsDialog: DialogComponent | undefined;
+  settingsSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  ngAfterViewInit(): void {
+    this.settingsSubject$?.subscribe(state => {
+      if (state) this.settingsDialog?.openDialog();
+      else this.settingsDialog?.closeDialog();
+    })
+  }
+
+  constructor(private themeService: ThemeSwitcherService) {
+    console.log(themeService.getActiveTheme);
+  }
+
+  public openSettings = () => {
+    this.settingsSubject$.next(true);
+  }
+
+  public closeSettings = () => {
+    this.settingsSubject$.next(false);
+  }
+
+  public toggleTheme() {
+    const newTheme = this.themeService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
+    this.themeService.setTheme(newTheme);
+  }
 
   items: Clickable[] = [
     {
@@ -37,16 +66,4 @@ export class AppComponent {
       action: this.openSettings,
     }
   ]
-
-  constructor(private themeService: ThemeSwitcherService) {
-    console.log(themeService.getActiveTheme);
-  }
-
-  openSettings() {
-    alert("open settings dialog");
-  }
-
-  closeSettings() {
-    console.log("close settings dialog");
-  }
 }

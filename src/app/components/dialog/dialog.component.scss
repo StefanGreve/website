@@ -1,0 +1,79 @@
+@use "../../styles/breakpoints.scss" as bp;
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/typography.scss" as typo;
+
+dialog[open] {
+  border-width: 0;
+  border-radius: 12px;
+  background-color: theme.$backgroundColor;
+
+  @include bp.for-size(bp.$xs) {
+    width: 80%;
+  }
+
+  @include bp.for-size(bp.$sm) {
+    width: 70%;
+  }
+
+  @include bp.for-size(bp.$md) {
+    width: 60%;
+  }
+
+  @include bp.for-size(bp.$xl) {
+    width: 50%;
+  }
+
+  // abstractions
+  $borderColor: theme.$surfaceColor;
+
+  h2 {
+    color: theme.$onSurfaceColor;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: unset;
+    margin-bottom: unset;
+
+    li {
+      padding-top: 0.75em;
+      padding-bottom: 0.75em;
+
+      &:first-child {
+        border-top: 1px solid $borderColor;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $borderColor;
+      }
+
+      label {
+        clear: right;
+        user-select: none;
+        color: theme.$onSurfaceColor;
+      }
+
+      label:has(~ :is([disabled], [readonly])) {
+        opacity: 50%;
+      }
+
+      input[type="checkbox"] {
+        float: right;
+        width: 1.25em;
+        height: 1.25em;
+      }
+
+      button {
+        all: unset;
+        color: theme.$infoColor;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      & * {
+        @include typo.p;
+        line-height: unset;
+      }
+    }
+  }
+}

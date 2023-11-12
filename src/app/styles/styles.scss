@@ -1,4 +1,5 @@
 @use "theme.scss" as theme;
+@use "typography.scss" as typo;
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@400;700&display=swap');
 
 :root {
@@ -12,6 +13,8 @@ html {
 
 body {
   margin: unset;
+  font-family: typo.$sansSerifFont;
+  background-color: theme.$backgroundColor;
 }
 
 *:focus {

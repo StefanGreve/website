@@ -1,0 +1,20 @@
+// breakpoints
+$xs: 360px;
+$sm: 480px;
+$md: 600px;
+$xl: 1400px;
+
+// aliases
+$mobile: $xs;
+$tablet: $md;
+$desktop: $xl;
+
+@mixin for-size($size) {
+  @if (($size == $xs) or ($size == $sm) or ($size == $md) or ($size == $xl)) {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

@@ -1,7 +1,49 @@
+@use "styles/breakpoints.scss" as bp;
+@use "styles/theme.scss" as theme;
 @use "styles/typography.scss" as typo;
 
 .title {
   @include typo.h1;
   text-align: center;
+  color: theme.$onBackgroundColor;
   margin-top: .5em;
+}
+
+// === media queries ===========================================================
+
+main,
+footer {
+  width: auto;
+}
+
+@include bp.for-size(bp.$xs) {
+  main,
+  footer {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@include bp.for-size(bp.$sm) {
+  main,
+  footer {
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+  }
+}
+
+@include bp.for-size(bp.$md) {
+  main,
+  footer {
+    margin-left: 6em;
+    margin-right: 6em;
+  }
+}
+
+@include bp.for-size(bp.$xl) {
+  main,
+  footer {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }

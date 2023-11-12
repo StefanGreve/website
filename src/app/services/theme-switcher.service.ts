@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { ThemeDefinition } from '../interfaces/theme';
 import { darkTheme } from '../data/darkTheme';
 import { lightTheme } from '../data/lightTheme';
 import { Theme } from '../enums/theme';
+import { ThemeDefinition } from '../interfaces/theme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
+  private readonly fallbackTheme = "Light";
 
   constructor() {
-    const cachedTheme = localStorage.getItem(this.localStorageKey) || "Light";
+    const cachedTheme = localStorage.getItem(this.localStorageKey) || this.fallbackTheme;
     const activeTheme = Theme[cachedTheme as keyof typeof Theme];
     this.setTheme(activeTheme);
   }
@@ -40,7 +41,12 @@ export class ThemeSwitcherService {
     localStorage.setItem(this.localStorageKey, Theme[theme]);
   }
 
-  get getActiveTheme(): string | null {
-    return localStorage.getItem(this.localStorageKey);
+  get getActiveTheme(): Theme {
+    const activeTheme: string = localStorage.getItem(this.localStorageKey) || this.fallbackTheme;
+    return Theme[activeTheme as keyof typeof Theme];
+  }
+
+  get getPreferredBrowserTheme(): Theme {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
   }
 }
