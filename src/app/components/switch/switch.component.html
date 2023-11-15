@@ -1,0 +1,5 @@
+<div>
+  <label for="{{ id }}"><ng-content /></label>
+  <input type="checkbox" name="{{ id }}" id="{{ id }}">
+  <label for="{{ id }}" [attr.aria-hidden]="true"></label>
+</div>
