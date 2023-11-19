@@ -1,5 +1,5 @@
 <header>
-  <adv-icons [icons]="icons" />
+  <adv-icons [icons]=icons />
   <adv-navigation [items]=items />
 </header>
 
@@ -8,18 +8,15 @@
     <h2>Settings</h2>
     <ul>
       <li>
-        <!-- TODO: extract to switch component -->
-        <label for="test1">Dark Theme</label>
-        <input id="test1" type="checkbox" (change)="toggleTheme()" />
+        <adv-switch [checked]=true (change)=toggleTheme()>Dark Theme</adv-switch>
       </li>
       <li>
-        <button (click)="closeSettings()">
+        <button (click)=closeSettings()>
           Close
         </button>
       </li>
     </ul>
   </adv-dialog>
   <h1 class="title">Hello, World!</h1>
-  <adv-code-line code="test" title="gpg key" />
-  <adv-switch>Dark Theme</adv-switch>
+  <adv-code-line code="test" title="GPG Key" />
 </main>

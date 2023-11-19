@@ -1,25 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { v4 as uuid } from "uuid";
 
 
 @Component({
   selector: 'adv-switch',
   templateUrl: './switch.component.html',
-  styleUrl: './switch.component.scss'
+  styleUrl: './switch.component.scss',
+  standalone: true,
 })
-export class SwitchComponent {
-  public readonly id: string;
+export class SwitchComponent implements OnInit {
+  public id!: string;
 
   @Input()
-  checked?: boolean;
+  public checked?: boolean;
 
   @Input()
-  disabled?: boolean;
+  public disabled?: boolean;
 
   @Input()
-  hidden?: boolean;
+  public hidden?: boolean;
 
-  constructor() {
+  public ngOnInit(): void {
     this.id = `switch__${uuid()}`;
   }
 }

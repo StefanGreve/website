@@ -79,5 +79,11 @@ div {
         left: 53px - 30px;
       }
     }
+
+    &:disabled {
+      & + label::before {
+        opacity: 50%;
+      }
+    }
   }
 }
