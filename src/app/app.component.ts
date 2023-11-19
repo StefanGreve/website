@@ -13,8 +13,15 @@ import { ThemeSwitcherService } from './services/theme-switcher.service';
 })
 export class AppComponent {
   icons: Icon[] = [
+    Icon.ArrowDown,
     Icon.Copy,
     Icon.CheckMark,
+  ];
+
+  languages: Array<string> = [
+    "German",
+    "English",
+    "Japanese"
   ];
 
   @ViewChild(DialogComponent, {static: false})
@@ -43,6 +50,10 @@ export class AppComponent {
   public toggleTheme() {
     const newTheme = this.themeService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
     this.themeService.setTheme(newTheme);
+  }
+
+  public changeLanguage(language: string) {
+    console.log(language);
   }
 
   items: NavigationItem[] = [

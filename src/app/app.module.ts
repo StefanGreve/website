@@ -7,6 +7,7 @@ import { CodeLineComponent } from './components/code-line/code-line.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { SwitchComponent } from './components/switch/switch.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SwitchComponent } from './components/switch/switch.component';
     SwitchComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DropdownComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

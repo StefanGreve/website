@@ -1,0 +1,84 @@
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/typography.scss" as typo;
+
+div {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  label {
+    @include typo.p;
+    color: theme.$onBackgroundColor;
+  }
+
+  span {
+    @include typo.p;
+    width: 100%;
+    user-select: none;
+    color: theme.$onBackgroundColor;
+    -webkit-tap-highlight-color: transparent;
+    text-align: end;
+    cursor: pointer;
+
+    svg {
+      fill: theme.$onBackgroundColor;
+    }
+
+    & + ul {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-top: 1.8em;
+      z-index: 1;
+
+      list-style-type: none;
+      background-color: theme.$surfaceColor;
+      border-radius: 14px;
+      min-width: 200px;
+      padding-left: unset;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
+
+      li {
+        @include typo.p;
+        color: theme.$onSurfaceColor;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 1.5em;
+        text-align: start;
+        border-bottom: 1px solid black;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: unset;
+        }
+
+        &:hover,
+        &:active {
+          color: theme.$onPrimaryColor;
+          background-color: theme.$primaryColor;
+        }
+
+        &:first-child:hover,
+        &:first-child:active {
+          border-top-left-radius: 14px;
+          border-top-right-radius: 14px;
+        }
+
+        &:last-child:hover,
+        &:last-child:active {
+          border-bottom-left-radius: 14px;
+          border-bottom-right-radius: 14px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    label + span + ul {
+      display: block;
+    }
+  }
+}
