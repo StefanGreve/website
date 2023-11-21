@@ -26,11 +26,10 @@ export class AppComponent {
     },
     {
       label: "German",
-      disabled: true,
     },
     {
       label: "Japanese",
-      hidden: true,
+      disabled: true,
     }
   ]).sort();
 

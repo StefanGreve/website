@@ -1,6 +1,10 @@
 <div *ngIf="!hidden">
   <label [for]=id><ng-content /></label>
-  <button role="button" [disabled]=disabled>
+  <button
+    type="button"
+    [disabled]=disabled
+    (click)=openOptions($event)
+  >
     {{ selectedOption }}
     <svg role="img" width="14" height="14">
       <use [attr.href]=icon />
@@ -8,11 +12,12 @@
   </button>
   <ul [id]=id>
     @for (option of options; track option) {
-      <li (click)=selectOption($event) tabindex="0">
+      <li>
         <button
           type="button"
           [disabled]=option.disabled
           [hidden]=option.hidden
+          (click)=selectOption($event)
         >
           {{ option.label }}
         </button>

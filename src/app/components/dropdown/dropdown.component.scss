@@ -43,6 +43,7 @@ div {
       min-width: 200px;
       padding-left: unset;
       box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
+      border-radius: 14px;
 
       li {
         button {
@@ -91,9 +92,7 @@ div {
     }
   }
 
-  &:hover {
-    label + button:enabled + ul {
-      display: block;
-    }
+  label + button.active:enabled + ul {
+    display: block;
   }
 }

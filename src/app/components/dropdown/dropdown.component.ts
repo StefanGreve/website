@@ -15,6 +15,7 @@ export class DropdownComponent implements OnInit {
   public id!: string;
   public icon!: string;
   public selectedOption?: string;
+  private dropdownButton?: HTMLButtonElement;
 
   @Input()
   public options!: Array<Item>;
@@ -34,9 +35,15 @@ export class DropdownComponent implements OnInit {
     this.selectedOption = this.options[0].label;
   }
 
+  public openOptions(event: Event) {
+    this.dropdownButton = event.target as HTMLButtonElement;
+    this.dropdownButton?.classList.toggle("active");
+  }
+
   public selectOption(event: Event) {
     const target = event.target as HTMLLIElement;
     this.selectedOption = target.innerHTML;
     this.changeOption.emit(this.selectedOption);
+    this.dropdownButton?.classList.remove("active");
   }
 }
