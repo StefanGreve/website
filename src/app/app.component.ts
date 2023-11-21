@@ -5,6 +5,8 @@ import { Icon } from './enums/icon';
 import { Theme } from './enums/theme';
 import { NavigationItem } from './interfaces/navigation-item';
 import { ThemeSwitcherService } from './services/theme-switcher.service';
+import { Item } from './interfaces/item';
+import Enumerable from './lib/Enumerable';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +20,19 @@ export class AppComponent {
     Icon.CheckMark,
   ];
 
-  languages: Array<string> = [
-    "German",
-    "English",
-    "Japanese"
-  ];
+  languages: Array<Item> = new Enumerable([
+    {
+      label: "English",
+    },
+    {
+      label: "German",
+      disabled: true,
+    },
+    {
+      label: "Japanese",
+      hidden: true,
+    }
+  ]).sort();
 
   @ViewChild(DialogComponent, {static: false})
   settingsDialog: DialogComponent | undefined;

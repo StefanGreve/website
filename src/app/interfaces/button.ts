@@ -1,6 +1,5 @@
-export interface Button {
-  label: string;
-  hidden?: boolean;
-  disabled?: boolean;
+import { Item } from "./item";
+
+export interface Button extends Item {
   action?: () => void;
 }
