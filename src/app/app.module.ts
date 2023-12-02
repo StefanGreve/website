@@ -15,10 +15,10 @@ import { SwitchComponent } from './components/switch/switch.component';
     CodeLineComponent,
     DialogComponent,
     IconsComponent,
-    SwitchComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    SwitchComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
