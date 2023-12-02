@@ -36,12 +36,12 @@ export class DropdownComponent implements OnInit {
     this.selectedOption = this.options?.at(0)?.label;
   }
 
-  public openOptions(event: Event) {
+  public openOptions(event: Event): void {
     this.dropdownButton = event.target as HTMLButtonElement;
     this.dropdownButton?.classList.toggle("active");
   }
 
-  public selectOption(event: Event) {
+  public selectOption(event: Event): void {
     const target = event.target as HTMLLIElement;
     this.selectedOption = target.innerHTML;
     this.changeOption.emit(this.selectedOption);

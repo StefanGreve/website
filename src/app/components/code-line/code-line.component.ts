@@ -32,7 +32,7 @@ export class CodeLineComponent {
     this.icon = this.DEFAULT_ICON;
   }
 
-  onClickCopy() {
+  onClickCopy(): void {
     let button  = document.getElementById(this.id);
 
     // copy code to clipboard and update icon
