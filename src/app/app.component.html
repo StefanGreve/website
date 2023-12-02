@@ -10,6 +10,9 @@
         <adv-switch [checked]=true (change)=toggleTheme()>Dark Theme</adv-switch>
       </li>
       <li>
+        <adv-dropdown [options]=languages (changeOption)=changeLanguage($event)>Language</adv-dropdown>
+      </li>
+      <li>
         <button (click)=closeSettings()>
           Close
         </button>

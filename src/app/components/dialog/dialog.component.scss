@@ -6,6 +6,7 @@ dialog[open] {
   border-width: 0;
   border-radius: 12px;
   background-color: theme.$backgroundColor;
+  // height: auto;
 
   @include bp.for-size(bp.$xs) {
     width: 80%;
@@ -30,7 +31,7 @@ dialog[open] {
     color: theme.$onSurfaceColor;
   }
 
-  ul {
+  h2 ~ ul {
     list-style-type: none;
     padding-left: unset;
     margin-bottom: unset;
