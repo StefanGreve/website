@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 
 @Component({
   selector: 'adv-dialog',
+  standalone: true,
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
   encapsulation: ViewEncapsulation.None
