@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DialogComponent } from './components/dialog/dialog.component';
-import { Icon } from './enums/icon';
 import { Theme } from './enums/theme';
 import { NavigationItem } from './interfaces/navigation-item';
 import { ThemeSwitcherService } from './services/theme-switcher.service';
@@ -14,12 +13,6 @@ import Enumerable from './lib/Enumerable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  icons: Icon[] = [
-    Icon.ArrowDown,
-    Icon.Copy,
-    Icon.CheckMark,
-  ];
-
   languages: Array<Item> = new Enumerable([
     {
       label: "English",

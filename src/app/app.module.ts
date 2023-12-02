@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/header/navigation.component';
 import { CodeLineComponent } from './components/code-line/code-line.component';
-import { IconsComponent } from './components/icons/icons.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
@@ -13,7 +12,6 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
   declarations: [
     AppComponent,
     DialogComponent,
-    IconsComponent,
   ],
   imports: [
     BrowserModule,

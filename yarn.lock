@@ -1472,6 +1472,27 @@
   dependencies:
     call-bind "^1.0.2"
 
+"@ng-icons/core@^26.2.0":
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/core/-/core-26.2.0.tgz#5784086aaa16866b1ee00525551666f4e861aaf8"
+  integrity sha512-+VbEQ2+Yr9FbQqFDwBNptNIpJHLNsp2k6ckkjRiuEMQSuvGAuKkpHy4gcIN7JwduKvL4j2j1UdB0K+91QYwkAQ==
+  dependencies:
+    tslib "^2.2.0"
+
+"@ng-icons/heroicons@^26.2.0":
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/heroicons/-/heroicons-26.2.0.tgz#3f0faa2b706f43191a1b9114c7ca3ac7ff8d1107"
+  integrity sha512-gLVrfUHG6HkKs437wlisiR4XTkPlhjED5i/0mP8rMLKqLzAZv7+ZPLHVrk7ULCcZmkQN6PmagRGSld4YwKkYiA==
+  dependencies:
+    tslib "^2.2.0"
+
+"@ng-icons/material-icons@^26.2.0":
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/material-icons/-/material-icons-26.2.0.tgz#160b88b206a837da7687c705a898a5b20d541fd9"
+  integrity sha512-a18pKZGXQZkZAQXiM38r4XtdSQxzewxJu0sCKKaeQM7BGkVhdwewe10NVQ1iBKlHYBj2RlBrgW65Gn1FoH9PPw==
+  dependencies:
+    tslib "^2.2.0"
+
 "@ngtools/webpack@17.0.0":
   version "17.0.0"
   resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-17.0.0.tgz"
@@ -5493,14 +5514,7 @@ rx@4.1.0:
   resolved "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
   integrity sha512-CiaiuN6gapkdl+cZUr67W6I8jquN4lkak3vtIsIWCl4XIPP8ffsoyN6/+PuGXnQy8Cu8W2y9Xxh31Rq4M6wUug==
 
-rxjs@7.8.1:
-  version "7.8.1"
-  resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
-  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
-  dependencies:
-    tslib "^2.1.0"
-
-rxjs@^7.8.1:
+rxjs@7.8.1, rxjs@^7.8.1:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
@@ -6127,7 +6141,7 @@ tree-kill@1.2.2:
   resolved "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
-tslib@2.6.2, tslib@^2.1.0, tslib@^2.3.0:
+tslib@2.6.2, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==

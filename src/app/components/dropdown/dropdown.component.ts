@@ -1,15 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Icon } from 'src/app/enums/icon';
 import { Item } from 'src/app/interfaces/item';
 import { v4 as uuid } from "uuid";
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { matKeyboardArrowDownOutline } from '@ng-icons/material-icons/outline';
 
 @Component({
   selector: 'adv-dropdown',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgIconComponent],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss'
+  styleUrl: './dropdown.component.scss',
+  viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
 })
 export class DropdownComponent implements OnInit {
   public id!: string;
@@ -31,7 +33,6 @@ export class DropdownComponent implements OnInit {
 
   public ngOnInit(): void {
     this.id = `dropdown__${uuid()}`;
-    this.icon = Icon.getId(Icon.ArrowDown, true);
     this.selectedOption = this.options?.at(0)?.label;
   }
 

@@ -1,7 +1,7 @@
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
 
-div.inline-code {
+div.adv-code-line {
   display: flex;
   flex-direction: row;
   height: 42px;
@@ -29,8 +29,9 @@ div.inline-code {
     background-color: theme.$surfaceColor;
     cursor: pointer;
 
-    svg {
-      fill: theme.$onSurfaceColor;
+    .icon {
+      color: theme.$neutralColor;
+      font-size: 1.1rem;
     }
 
     &:hover {
@@ -40,8 +41,8 @@ div.inline-code {
     &.active {
       border-color: theme.$successColor;
 
-      svg {
-        fill: theme.$successColor;
+      .icon {
+        color: theme.$successColor;
       }
     }
   }

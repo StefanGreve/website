@@ -28,10 +28,6 @@ div {
       cursor: not-allowed;
     }
 
-    svg {
-      fill: theme.$onBackgroundColor;
-    }
-
     & + ul {
       display: none;
       position: absolute;
