@@ -2,9 +2,12 @@ import { Component, Input } from '@angular/core';
 import { v4 as uuid } from "uuid";
 import { Utils } from "../../lib/utils";
 import { Icon } from 'src/app/enums/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'adv-code-line',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './code-line.component.html',
   styleUrls: ['./code-line.component.scss']
 })

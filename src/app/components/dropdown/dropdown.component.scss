@@ -9,6 +9,7 @@ div {
   label {
     @include typo.p;
     color: theme.$onBackgroundColor;
+    user-select: none;
   }
 
   button {

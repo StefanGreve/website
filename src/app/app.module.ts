@@ -12,15 +12,15 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    CodeLineComponent,
     DialogComponent,
     IconsComponent,
-    SwitchComponent,
   ],
   imports: [
     BrowserModule,
-    DropdownComponent
+    CodeLineComponent,
+    SwitchComponent,
+    DropdownComponent,
+    NavigationComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

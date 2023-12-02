@@ -18,7 +18,7 @@ export class DropdownComponent implements OnInit {
   private dropdownButton?: HTMLButtonElement;
 
   @Input()
-  public options!: Array<Item>;
+  public options?: Item[];
 
   @Input()
   public hidden?: boolean;
@@ -32,7 +32,7 @@ export class DropdownComponent implements OnInit {
   public ngOnInit(): void {
     this.id = `dropdown__${uuid()}`;
     this.icon = Icon.getId(Icon.ArrowDown, true);
-    this.selectedOption = this.options[0].label;
+    this.selectedOption = this.options?.at(0)?.label;
   }
 
   public openOptions(event: Event) {
