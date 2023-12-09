@@ -1,4 +1,4 @@
-<div *ngIf="!hidden">
+<div *ngIf="!hidden" class="adv-dropdown">
   <label [for]=id><ng-content /></label>
   <button
     type="button"
@@ -10,7 +10,7 @@
   </button>
   <ul [id]=id>
     @for (option of options; track option) {
-      <li>
+      <li class="adv-selection">
         <button
           type="button"
           [disabled]=option.disabled

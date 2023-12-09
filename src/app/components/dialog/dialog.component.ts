@@ -1,5 +1,5 @@
+import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { v4 as uuid } from "uuid";
 
 
 @Component({
@@ -7,24 +7,17 @@ import { v4 as uuid } from "uuid";
   standalone: true,
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  imports: [CommonModule]
 })
 export class DialogComponent {
-  public readonly id!: string;
-
-  constructor() {
-    this.id = `dialog__${uuid()}`;
-  }
+  public visible: boolean = false;
 
   public openDialog(): void {
-    const dialog = document.getElementById(this.id) as HTMLDialogElement;
-    dialog?.showModal();
-    document.body.style.filter = "blur(4px)";
+    this.visible = true;
   }
 
   public closeDialog(): void {
-    const dialog = document.getElementById(this.id) as HTMLDialogElement;
-    dialog?.close();
-    document.body.style.filter = "unset";
+    this.visible = false;
   }
 }

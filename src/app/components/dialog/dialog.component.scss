@@ -2,10 +2,16 @@
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
 
-dialog[open] {
+div.adv-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   border-width: 0;
   border-radius: 12px;
   background-color: theme.$backgroundColor;
+  padding: 1em;
 
   @include bp.for-size(bp.$xs) {
     width: 80%;
@@ -30,7 +36,7 @@ dialog[open] {
     color: theme.$onSurfaceColor;
   }
 
-  h2 ~ ul {
+  h2 ~ ul.adv-dialog-content {
     list-style-type: none;
     padding-left: unset;
     margin-bottom: unset;
