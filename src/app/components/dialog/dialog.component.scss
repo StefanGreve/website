@@ -30,7 +30,7 @@ dialog[open] {
     color: theme.$onSurfaceColor;
   }
 
-  ul {
+  h2 ~ ul {
     list-style-type: none;
     padding-left: unset;
     margin-bottom: unset;
