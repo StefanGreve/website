@@ -4,11 +4,12 @@ import { Item } from 'src/app/interfaces/item';
 import { v4 as uuid } from "uuid";
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { matKeyboardArrowDownOutline } from '@ng-icons/material-icons/outline';
+import { ClickedOutsideDirective } from 'src/app/directives/clicked-outside.directive';
 
 @Component({
   selector: 'adv-dropdown',
   standalone: true,
-  imports: [CommonModule, NgIconComponent],
+  imports: [CommonModule, NgIconComponent, ClickedOutsideDirective],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
@@ -45,6 +46,10 @@ export class DropdownComponent implements OnInit {
     const target = event.target as HTMLLIElement;
     this.selectedOption = target.innerHTML;
     this.changeOption.emit(this.selectedOption);
+    this.dropdownButton?.classList.remove("active");
+  }
+
+  public closeDropdown(): void {
     this.dropdownButton?.classList.remove("active");
   }
 }
