@@ -15,9 +15,11 @@ export class DialogComponent {
 
   public openDialog(): void {
     this.visible = true;
+    document.body.classList.add("adv-dialog-open");
   }
 
   public closeDialog(): void {
     this.visible = false;
+    document.body.classList.remove("adv-dialog-open");
   }
 }

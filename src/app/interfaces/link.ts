@@ -1,7 +1,6 @@
-export interface Link {
-  label: string
-  href?: string
-  external?: boolean
-  hidden?: boolean;
-  disabled?: boolean
+import { Item } from "./item";
+
+export interface Link extends Item {
+  href?: string;
+  external?: boolean;
 }
