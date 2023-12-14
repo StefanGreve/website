@@ -1,4 +1,4 @@
-<div *ngIf="!hidden" class="adv-dropdown">
+<div *ngIf="!hidden" class="adv-dropdown" clickedOutside (clickedOutside)="closeDropdown()">
   <label [for]=id><ng-content /></label>
   <button
     type="button"
