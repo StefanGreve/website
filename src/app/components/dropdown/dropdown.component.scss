@@ -1,7 +1,7 @@
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
 
-div {
+div.adv-dropdown {
   display: flex;
   align-items: center;
   position: relative;
@@ -14,7 +14,9 @@ div {
 
   button {
     @include typo.p;
+    display: block;
     width: 100%;
+    height: auto;
     user-select: none;
     color: theme.$onBackgroundColor;
     background-color: transparent;
@@ -39,10 +41,9 @@ div {
       list-style-type: none;
       min-width: 200px;
       padding-left: unset;
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
       border-radius: 14px;
 
-      li {
+      li.adv-selection {
         padding-top: unset;
         padding-bottom: unset;
 
@@ -61,6 +62,7 @@ div {
           user-select: none;
           cursor: pointer;
           border-bottom: 1px solid black;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
 
           &:disabled {
             opacity: 50%;
@@ -71,6 +73,10 @@ div {
               color: theme.$onPrimaryColor;
               background-color: theme.$primaryColor;
           }
+        }
+
+        &:first-child {
+          border-top: unset;
         }
 
         &:last-child > button {
