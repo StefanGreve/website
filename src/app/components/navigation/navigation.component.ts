@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationItem } from 'src/app/interfaces/navigation-item';
 
 @Component({
@@ -9,7 +9,7 @@ import { NavigationItem } from 'src/app/interfaces/navigation-item';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
   @Input()
   items: NavigationItem[] | undefined;
 

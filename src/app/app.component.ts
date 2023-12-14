@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { Theme } from './enums/theme';
@@ -8,11 +8,11 @@ import { Item } from './interfaces/item';
 import Enumerable from './lib/Enumerable';
 
 @Component({
-  selector: 'app-root',
+  selector: 'adv-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   languages: Array<Item> = new Enumerable([
     {
       label: "English",

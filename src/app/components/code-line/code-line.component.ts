@@ -33,7 +33,7 @@ export class CodeLineComponent {
   }
 
   onClickCopy(): void {
-    let button  = document.getElementById(this.id);
+    const button  = document.getElementById(this.id);
 
     // copy code to clipboard and update icon
     navigator.clipboard.writeText(this.code ?? "");
