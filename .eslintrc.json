@@ -14,6 +14,10 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "plugins": [
+        "@angular-eslint",
+        "@typescript-eslint"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -29,6 +33,54 @@
             "type": "element",
             "prefix": "adv",
             "style": "kebab-case"
+          }
+        ],
+        "semi": "error",
+        "no-tabs": "error",
+        "curly": "off",
+        "eol-last": "error",
+        "no-unused-expressions": "warn",
+        "no-unused-vars": "warn",
+        "max-len": [
+          "error",
+          {
+            "code": 160,
+            "ignoreUrls": true
+          }
+        ],
+        "prefer-const": "error",
+        "arrow-parens": "off",
+        "arrow-body-style": [
+          "error",
+          "as-needed"
+        ],
+        "no-trailing-spaces": "error",
+        "no-multiple-empty-lines": "error",
+        "comma-dangle": "off",
+        "space-before-function-paren": [
+          "error",
+          {
+            "anonymous": "never",
+            "asyncArrow": "always",
+            "named": "never"
+          }
+        ],
+        "@typescript-eslint/quotes": [
+          "error",
+          "double",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn"
+        ],
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          "always",
+          {
+            "exceptAfterSingleLine": true
           }
         ]
       }
