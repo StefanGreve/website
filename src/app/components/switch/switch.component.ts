@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
 import { v4 as uuid } from "uuid";
 
 
 @Component({
-  selector: 'adv-switch',
-  templateUrl: './switch.component.html',
-  styleUrl: './switch.component.scss',
+  selector: "adv-switch",
+  templateUrl: "./switch.component.html",
+  styleUrl: "./switch.component.scss",
   standalone: true,
 })
 export class SwitchComponent implements OnInit {

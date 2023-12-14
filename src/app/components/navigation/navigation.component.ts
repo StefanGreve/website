@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { NavigationItem } from 'src/app/interfaces/navigation-item';
+import { CommonModule } from "@angular/common";
+import { Component, Input, OnInit } from "@angular/core";
+import { NavigationItem } from "src/app/interfaces/navigation-item";
 
 @Component({
-  selector: 'adv-navigation',
+  selector: "adv-navigation",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  templateUrl: "./navigation.component.html",
+  styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
   @Input()

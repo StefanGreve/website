@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CodeLineComponent } from './code-line.component';
+import { CodeLineComponent } from "./code-line.component";
 
-describe('CodeLineComponent', () => {
+describe("CodeLineComponent", () => {
   let component: CodeLineComponent;
   let fixture: ComponentFixture<CodeLineComponent>;
 
@@ -15,7 +15,7 @@ describe('CodeLineComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

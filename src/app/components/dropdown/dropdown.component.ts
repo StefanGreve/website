@@ -1,17 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Item } from 'src/app/interfaces/item';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Item } from "src/app/interfaces/item";
 import { v4 as uuid } from "uuid";
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { matKeyboardArrowDownOutline } from '@ng-icons/material-icons/outline';
-import { ClickedOutsideDirective } from 'src/app/directives/clicked-outside.directive';
+import { NgIconComponent, provideIcons } from "@ng-icons/core";
+import { matKeyboardArrowDownOutline } from "@ng-icons/material-icons/outline";
+import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.directive";
 
 @Component({
-  selector: 'adv-dropdown',
+  selector: "adv-dropdown",
   standalone: true,
   imports: [CommonModule, NgIconComponent, ClickedOutsideDirective],
-  templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss',
+  templateUrl: "./dropdown.component.html",
+  styleUrl: "./dropdown.component.scss",
   viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
 })
 export class DropdownComponent implements OnInit {

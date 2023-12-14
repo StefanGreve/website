@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { darkTheme } from '../data/darkTheme';
-import { lightTheme } from '../data/lightTheme';
-import { Theme } from '../enums/theme';
-import { ThemeDefinition } from '../interfaces/theme';
+import { Injectable } from "@angular/core";
+import { darkTheme } from "../data/darkTheme";
+import { lightTheme } from "../data/lightTheme";
+import { Theme } from "../enums/theme";
+import { ThemeDefinition } from "../interfaces/theme";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
@@ -22,7 +22,7 @@ export class ThemeSwitcherService {
       // Custom CSS properties (variables) require a double hyphen as leading
       // characters. By convention, TypeScript properties use camelCase which
       // we also replace here with a single hyphen character as a word separator
-      const variable = `--${key.split(/(?=[A-Z])/).join('-').toLowerCase()}`;
+      const variable = `--${key.split(/(?=[A-Z])/).join("-").toLowerCase()}`;
       document.documentElement.style.setProperty(variable, themeDefinition[key]);
     });
   }
