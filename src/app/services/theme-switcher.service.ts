@@ -19,7 +19,7 @@ export class ThemeSwitcherService {
 
   private setIcon(theme: Theme): void {
     const prevTheme = theme === Theme.Light ? "dark" : "light";
-    const activeTheme = theme === Theme.Light ? "light" : "dark";
+    const activeTheme = Theme[theme].toLowerCase();
 
     document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
       link.setAttribute("href", link.href.replace(prevTheme, activeTheme));

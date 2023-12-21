@@ -45,7 +45,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   constructor(private themeService: ThemeSwitcherService) {
-    console.log(themeService.getActiveTheme);
+    console.log(`Active Theme: ${Theme[themeService.getActiveTheme]}`);
   }
 
   public openSettings = () => {
