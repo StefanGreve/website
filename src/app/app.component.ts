@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
@@ -12,7 +12,9 @@ import Enumerable from "./lib/Enumerable";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
+  isDarkThemeEnabled = false;
+
   languages: Array<Item> = new Enumerable([
     {
       label: "English",
@@ -30,6 +32,10 @@ export class AppComponent implements AfterViewInit {
   settingsDialog: DialogComponent | undefined;
 
   settingsSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  ngOnInit(): void {
+    this.isDarkThemeEnabled = this.themeService.getActiveTheme === Theme.Dark;
+  }
 
   ngAfterViewInit(): void {
     this.settingsSubject$?.subscribe(state => {
@@ -53,6 +59,7 @@ export class AppComponent implements AfterViewInit {
   public toggleTheme() {
     const newTheme = this.themeService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
     this.themeService.setTheme(newTheme);
+    this.isDarkThemeEnabled = !this.isDarkThemeEnabled;
   }
 
   public changeLanguage(language: string) {
