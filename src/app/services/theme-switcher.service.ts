@@ -17,6 +17,15 @@ export class ThemeSwitcherService {
     this.setTheme(activeTheme);
   }
 
+  private setIcon(theme: Theme): void {
+    const prevTheme = theme === Theme.Light ? "dark" : "light";
+    const activeTheme = theme === Theme.Light ? "light" : "dark";
+
+    document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
+      link.setAttribute("href", link.href.replace(prevTheme, activeTheme));
+    });
+  }
+
   private createTheme(themeDefinition: ThemeDefinition): void {
     Object.keys(themeDefinition).forEach(key => {
       // Custom CSS properties (variables) require a double hyphen as leading
@@ -39,6 +48,7 @@ export class ThemeSwitcherService {
     }
 
     localStorage.setItem(this.localStorageKey, Theme[theme]);
+    this.setIcon(theme);
   }
 
   get getActiveTheme(): Theme {
