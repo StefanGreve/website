@@ -4,13 +4,13 @@ import { Directive, ElementRef, EventEmitter, HostListener, inject, Output } fro
   selector: "[advClickOutside]",
   standalone: true
 })
-export class ClickedOutsideDirective {
+export class ClickedOutsideDirective<T> {
   private elementRef = inject(ElementRef);
 
-  @Output() public clickedOutside = new EventEmitter();
+  @Output() public clickedOutside = new EventEmitter<T>();
 
   @HostListener("document:click", ["$event.target"])
-  public onClick(target: never): void {
+  public onClick(target: T): void {
     const clickedOutside = this.elementRef.nativeElement.contains(target);
 
     if (!clickedOutside) {
