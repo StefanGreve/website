@@ -10,11 +10,9 @@ import { ThemeDefinition } from "../interfaces/theme";
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
   private readonly fallbackTheme = "Light";
-  private preferredBrowserTheme = "";
 
   constructor() {
-    this.preferredBrowserTheme = this.getPreferredBrowserTheme === 1 ? "Light" : "Dark";
-    const cachedTheme = localStorage.getItem(this.localStorageKey) || this.preferredBrowserTheme;
+    const cachedTheme = Theme[this.getPreferredBrowserTheme];
     const activeTheme = Theme[cachedTheme as keyof typeof Theme];
     this.setTheme(activeTheme);
   }
@@ -54,7 +52,7 @@ export class ThemeSwitcherService {
   }
 
   get getActiveTheme(): Theme {
-    const activeTheme: string = localStorage.getItem(this.localStorageKey) || this.preferredBrowserTheme;
+    const activeTheme: string = Theme[this.getPreferredBrowserTheme];
     return Theme[activeTheme as keyof typeof Theme];
   }
 
