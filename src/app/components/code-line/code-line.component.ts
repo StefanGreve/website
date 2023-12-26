@@ -1,16 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 import { v4 as uuid } from "uuid";
 import { Utils } from "../../lib/utils";
-import { CommonModule } from '@angular/common';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { matCheckOutline, matContentCopyOutline } from '@ng-icons/material-icons/outline';
+import { CommonModule } from "@angular/common";
+import { NgIconComponent, provideIcons } from "@ng-icons/core";
+import { matCheckOutline, matContentCopyOutline } from "@ng-icons/material-icons/outline";
 
 @Component({
-  selector: 'adv-code-line',
+  selector: "adv-code-line",
   standalone: true,
   imports: [CommonModule, NgIconComponent],
-  templateUrl: './code-line.component.html',
-  styleUrls: ['./code-line.component.scss'],
+  templateUrl: "./code-line.component.html",
+  styleUrls: ["./code-line.component.scss"],
   viewProviders: [provideIcons({ matCheckOutline, matContentCopyOutline })]
 })
 export class CodeLineComponent {
@@ -28,12 +28,12 @@ export class CodeLineComponent {
 
 
   constructor() {
-    this.id = `code__${uuid()}`
+    this.id = `code__${uuid()}`;
     this.icon = this.DEFAULT_ICON;
   }
 
   onClickCopy(): void {
-    let button  = document.getElementById(this.id);
+    const button  = document.getElementById(this.id);
 
     // copy code to clipboard and update icon
     navigator.clipboard.writeText(this.code ?? "");

@@ -1,20 +1,29 @@
-import { Injectable } from '@angular/core';
-import { darkTheme } from '../data/darkTheme';
-import { lightTheme } from '../data/lightTheme';
-import { Theme } from '../enums/theme';
-import { ThemeDefinition } from '../interfaces/theme';
+import { Injectable } from "@angular/core";
+import { darkTheme } from "../data/darkTheme";
+import { lightTheme } from "../data/lightTheme";
+import { Theme } from "../enums/theme";
+import { ThemeDefinition } from "../interfaces/theme";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
   private readonly fallbackTheme = "Light";
 
   constructor() {
-    const cachedTheme = localStorage.getItem(this.localStorageKey) || this.fallbackTheme;
+    const cachedTheme = Theme[this.getPreferredBrowserTheme];
     const activeTheme = Theme[cachedTheme as keyof typeof Theme];
     this.setTheme(activeTheme);
+  }
+
+  private setIcon(theme: Theme): void {
+    const prevTheme = theme === Theme.Light ? "dark" : "light";
+    const activeTheme = Theme[theme].toLowerCase();
+
+    document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
+      link.setAttribute("href", link.href.replace(prevTheme, activeTheme));
+    });
   }
 
   private createTheme(themeDefinition: ThemeDefinition): void {
@@ -22,7 +31,7 @@ export class ThemeSwitcherService {
       // Custom CSS properties (variables) require a double hyphen as leading
       // characters. By convention, TypeScript properties use camelCase which
       // we also replace here with a single hyphen character as a word separator
-      const variable = `--${key.split(/(?=[A-Z])/).join('-').toLowerCase()}`;
+      const variable = `--${key.split(/(?=[A-Z])/).join("-").toLowerCase()}`;
       document.documentElement.style.setProperty(variable, themeDefinition[key]);
     });
   }
@@ -39,10 +48,11 @@ export class ThemeSwitcherService {
     }
 
     localStorage.setItem(this.localStorageKey, Theme[theme]);
+    this.setIcon(theme);
   }
 
   get getActiveTheme(): Theme {
-    const activeTheme: string = localStorage.getItem(this.localStorageKey) || this.fallbackTheme;
+    const activeTheme: string = localStorage.getItem(this.localStorageKey) || Theme[this.getPreferredBrowserTheme];
     return Theme[activeTheme as keyof typeof Theme];
   }
 

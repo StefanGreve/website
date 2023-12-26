@@ -16,6 +16,7 @@
           tabindex="0"
           [attr.aria-disabled]="item?.disabled"
           (click)="item?.action()"
+          (keydown)="item?.action()"
         >
           {{ item.label }}
         </a>

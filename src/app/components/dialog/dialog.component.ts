@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component, ViewEncapsulation } from "@angular/core";
 
 
 @Component({
-  selector: 'adv-dialog',
+  selector: "adv-dialog",
   standalone: true,
-  templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.scss',
+  templateUrl: "./dialog.component.html",
+  styleUrl: "./dialog.component.scss",
   encapsulation: ViewEncapsulation.None,
   imports: [CommonModule]
 })
