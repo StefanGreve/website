@@ -52,7 +52,7 @@ export class ThemeSwitcherService {
   }
 
   get getActiveTheme(): Theme {
-    const activeTheme: string = Theme[this.getPreferredBrowserTheme];
+    const activeTheme: string = localStorage.getItem(this.localStorageKey) || Theme[this.getPreferredBrowserTheme];
     return Theme[activeTheme as keyof typeof Theme];
   }
 
