@@ -40,7 +40,7 @@
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "6.13.1",
     "@typescript-eslint/parser": "6.13.1",
-    "eslint": "^8.54.0",
+    "eslint": "^8.56.0",
     "husky": "^8.0.3",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
