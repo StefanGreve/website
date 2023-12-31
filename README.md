@@ -26,6 +26,12 @@ ng serve --open --configuration=de
 
 ### Create translation files:
 
-```ps
+```powershell
 npm run localize
+```
+
+### Build production files:
+
+```powershell
+npm run build
 ```
