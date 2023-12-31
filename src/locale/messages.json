@@ -1,6 +1,7 @@
 {
   "locale": "en-US",
   "translations": {
+    "SettingsHeader": "Settings",
     "SettingsDarkTheme": "Dark Theme",
     "SettingsLanguage": "Language",
     "SettingsCloseButton": " Close ",
