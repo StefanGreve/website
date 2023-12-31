@@ -1,0 +1,16 @@
+{
+  "locale": "en-US",
+  "translations": {
+    "SettingsDarkTheme": "Dark Theme",
+    "SettingsLanguage": "Language",
+    "SettingsCloseButton": " Close ",
+    "MainTitle": "Hello, World!",
+    "GPGCode": "English",
+    "GPGTitle": "GPG Key",
+    "DropdownOptionEnglish": "English",
+    "DropdownOptionGerman": "German",
+    "DropdownOptionJapanese": "Japanese",
+    "Archive": "Archive",
+    "Settings": "Settings"
+  }
+}

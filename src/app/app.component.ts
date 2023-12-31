@@ -17,13 +17,13 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   languages: Array<Item> = new Enumerable([
     {
-      label: "English",
+      label: $localize`:@@DropdownOptionEnglish:English`,
     },
     {
-      label: "German",
+      label: $localize`:@@DropdownOptionGerman:German`,
     },
     {
-      label: "Japanese",
+      label: $localize`:@@DropdownOptionJapanese:Japanese`,
       disabled: true,
     }
   ]).sort();
@@ -73,7 +73,7 @@ export class AppComponent implements AfterViewInit, OnInit {
       disabled: true,
     },
     {
-      label: "Archive",
+      label: $localize`:@@Archive:Archive`,
       href: "https://archive.stefangreve.com/",
       external: true,
     },
@@ -82,7 +82,7 @@ export class AppComponent implements AfterViewInit, OnInit {
       hidden: true,
     },
     {
-      label: "Settings",
+      label: $localize`:@@Settings:Settings`,
       action: this.openSettings,
     }
   ];
