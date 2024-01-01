@@ -1604,10 +1604,10 @@
   dependencies:
     tslib "^2.2.0"
 
-"@ng-icons/heroicons@^26.2.0":
-  version "26.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-icons/heroicons/-/heroicons-26.2.0.tgz#3f0faa2b706f43191a1b9114c7ca3ac7ff8d1107"
-  integrity sha512-gLVrfUHG6HkKs437wlisiR4XTkPlhjED5i/0mP8rMLKqLzAZv7+ZPLHVrk7ULCcZmkQN6PmagRGSld4YwKkYiA==
+"@ng-icons/heroicons@^26.3.0":
+  version "26.3.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/heroicons/-/heroicons-26.3.0.tgz#e8322fb5ecae29e6cb29c0338e81302d3b011c22"
+  integrity sha512-rj0Y6lWtQqADtMGx/cipY/ezocSVwSKEFYZEvRMFOrDIvTx80aQKldmnCVl97OQlmBKfefVpT6NQgd3G4ZNGWQ==
   dependencies:
     tslib "^2.2.0"
 
