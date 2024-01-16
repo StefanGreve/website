@@ -18,7 +18,7 @@ export class DropdownComponent implements OnInit {
   public id!: string;
   public icon!: string;
   public selectedOption?: string;
-  private dropdownButton?: HTMLButtonElement;
+  public isOpened = false;
 
   @Input()
   public options?: Item[];
@@ -37,19 +37,18 @@ export class DropdownComponent implements OnInit {
     this.selectedOption = this.options?.at(0)?.label;
   }
 
-  public openOptions(event: Event): void {
-    this.dropdownButton = event.target as HTMLButtonElement;
-    this.dropdownButton?.classList.toggle("active");
+  public open(): void {
+    this.isOpened = true;
   }
 
   public selectOption(event: Event): void {
     const target = event.target as HTMLLIElement;
     this.selectedOption = target.innerHTML;
     this.changeOption.emit(this.selectedOption);
-    this.dropdownButton?.classList.remove("active");
+    this.isOpened = false;
   }
 
-  public closeDropdown(): void {
-    this.dropdownButton?.classList.remove("active");
+  public close(): void {
+    this.isOpened = false;
   }
 }
