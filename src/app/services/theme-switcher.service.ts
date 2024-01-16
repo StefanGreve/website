@@ -9,16 +9,14 @@ import { ThemeDefinition } from "../interfaces/theme";
 })
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
-  private readonly fallbackTheme = "Light";
 
   constructor() {
-    const cachedTheme = Theme[this.getPreferredBrowserTheme];
-    const activeTheme = Theme[cachedTheme as keyof typeof Theme];
-    this.setTheme(activeTheme);
+    const cachedTheme: string = localStorage.getItem(this.localStorageKey) || Theme[this.getPreferredBrowserTheme];
+    this.setTheme(Theme[cachedTheme as keyof typeof Theme]);
   }
 
   private setIcon(theme: Theme): void {
-    const prevTheme = theme === Theme.Light ? "dark" : "light";
+    const prevTheme = (theme === Theme.Light) ? "dark" : "light";
     const activeTheme = Theme[theme].toLowerCase();
 
     document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
