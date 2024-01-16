@@ -7,12 +7,14 @@ import { CodeLineComponent } from "./components/code-line/code-line.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { SwitchComponent } from "./components/switch/switch.component";
 import { DropdownComponent } from "./components/dropdown/dropdown.component";
+import { AlertComponent } from "./components/alert/alert.component";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AlertComponent,
     BrowserModule,
     CodeLineComponent,
     SwitchComponent,

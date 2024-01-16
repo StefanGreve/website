@@ -6,6 +6,8 @@ import { NavigationItem } from "./interfaces/navigation-item";
 import { ThemeSwitcherService } from "./services/theme-switcher.service";
 import { Item } from "./interfaces/item";
 import Enumerable from "./lib/Enumerable";
+import { Button } from "./interfaces/button";
+import { State } from "./enums/state";
 
 @Component({
   selector: "adv-root",
@@ -84,6 +86,24 @@ export class AppComponent implements AfterViewInit, OnInit {
     {
       label: "Settings",
       action: this.openSettings,
+    }
+  ];
+
+  testAlert: Button[] = [
+    {
+      label: "Ok",
+      action: () => console.log("ok"),
+      state: State.Info,
+    },
+    {
+      label: "Fire Missiles",
+      action: () => console.log("lol"),
+      state: State.Danger,
+    },
+    {
+      label: "Cancel",
+      action: () => console.log("cancel"),
+      disabled: true
     }
   ];
 }
