@@ -11,3 +11,9 @@
     background: rgba(0, 0, 0, 0.1);
   }
 }
+
+@mixin disabled {
+  cursor: not-allowed;
+  // TODO: find a way to apply opacity only to foreground and background colors
+  opacity: 50%;
+}
