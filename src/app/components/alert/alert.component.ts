@@ -47,6 +47,8 @@ export class AlertComponent implements OnInit {
     this.id = `alert__${uuid()}`;
     this.title ??= "Alert";
 
+    // if there are only two buttons, then the primary button should be placed
+    // on the right-hand side
     if (this.actions?.length === 2) {
         this.actions?.reverse();
     }
