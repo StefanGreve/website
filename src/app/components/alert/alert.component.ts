@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
-import {v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "adv-alert",

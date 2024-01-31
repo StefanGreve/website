@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { BehaviorSubject, take } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
 import { NavigationItem } from "./interfaces/navigation-item";
