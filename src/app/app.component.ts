@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, take } from "rxjs";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
 import { NavigationItem } from "./interfaces/navigation-item";
@@ -8,6 +8,7 @@ import { Item } from "./interfaces/item";
 import Enumerable from "./lib/Enumerable";
 import { Button } from "./interfaces/button";
 import { State } from "./enums/state";
+import { AlertComponent } from "./components/alert/alert.component";
 
 @Component({
   selector: "adv-root",
@@ -30,6 +31,11 @@ export class AppComponent implements AfterViewInit, OnInit {
     }
   ]).sort();
 
+  @ViewChild(AlertComponent, {static: false})
+  alert: AlertComponent | undefined;
+
+  alertSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   @ViewChild(DialogComponent, {static: false})
   settingsDialog: DialogComponent | undefined;
 
@@ -40,15 +46,28 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
+    this.alertSubject$?.subscribe(state => {
+      if (state) this.alert?.open();
+      else this.alert?.close();
+    });
+
     this.settingsSubject$?.subscribe(state => {
-      if (state) this.settingsDialog?.openDialog();
-      else this.settingsDialog?.closeDialog();
+      if (state) this.settingsDialog?.open();
+      else this.settingsDialog?.close();
     });
   }
 
   constructor(private themeService: ThemeSwitcherService) {
     console.log(`Active Theme: ${Theme[themeService.getActiveTheme]}`);
   }
+
+  public openAlert = () => {
+    this.alertSubject$.next(true);
+  };
+
+  public closeAlert = () => {
+    this.alertSubject$.next(false);
+  };
 
   public openSettings = () => {
     this.settingsSubject$.next(true);
@@ -80,8 +99,9 @@ export class AppComponent implements AfterViewInit, OnInit {
       external: true,
     },
     {
-      label: "WIP",
-      hidden: true,
+      label: "Alert",
+      hidden: false,
+      action: this.openAlert,
     },
     {
       label: "Settings",
@@ -92,18 +112,13 @@ export class AppComponent implements AfterViewInit, OnInit {
   testAlert: Button[] = [
     {
       label: "Ok",
-      action: () => console.log("ok"),
+      action: this.closeAlert,
       state: State.Info,
     },
     {
       label: "Fire Missiles",
-      action: () => console.log("lol"),
+      action: () => console.log("🔥"),
       state: State.Danger,
     },
-    {
-      label: "Cancel",
-      action: () => console.log("cancel"),
-      disabled: true
-    }
   ];
 }

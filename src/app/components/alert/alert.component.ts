@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
 import {v4 as uuid } from "uuid";
@@ -15,10 +15,15 @@ import {v4 as uuid } from "uuid";
 export class AlertComponent implements OnInit {
   public id!: string;
   public State = State;
-  public visible: boolean = true; // false
+  public visible: boolean = false;
 
   @Input()
-  public title!: string;
+  public title: string | undefined;
+
+  @HostBinding("attr.title")
+  get getTitle(): null {
+    return null;
+  }
 
   @Input()
   public content?: string;
@@ -41,7 +46,9 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.id = `alert__${uuid()}`;
     this.title ??= "Alert";
-    // line added for testing purposes temporarily
-    document.body.classList.add("adv-alert-open");
+
+    if (this.actions?.length === 2) {
+        this.actions?.reverse();
+    }
   }
 }

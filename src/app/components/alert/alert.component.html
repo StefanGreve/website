@@ -10,8 +10,8 @@
   <div class="adv-alert-actions">
     @for (action of actions; track action) {
       <button
+        *ngIf="!action.hidden"
         type="button"
-        [hidden]=action.hidden
         [disabled]=action.disabled
         [attr.data-state]="action.state ?? State.Default"
         aria-label=action.label
