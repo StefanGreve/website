@@ -1,3 +1,4 @@
+@use "../../styles/toolbox.scss" as tb;
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
 
@@ -26,8 +27,7 @@ div.adv-dropdown {
     cursor: pointer;
 
     &:disabled {
-      opacity: 50%;
-      cursor: not-allowed;
+      @include tb.disabled;
     }
 
     & + ul {
@@ -44,6 +44,7 @@ div.adv-dropdown {
       border-radius: 14px;
 
       li.adv-selection {
+        // overwrites dialog wrapper styles
         padding-top: unset;
         padding-bottom: unset;
 
@@ -61,18 +62,22 @@ div.adv-dropdown {
           -webkit-tap-highlight-color: transparent;
           user-select: none;
           cursor: pointer;
-          border-bottom: 1px solid black;
+          border-bottom: 1px solid theme.$surfaceBorder;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
 
           &:disabled {
-            opacity: 50%;
-            cursor: not-allowed;
+            @include tb.disabled;
           }
 
           &:hover:enabled {
               color: theme.$onPrimaryColor;
               background-color: theme.$primaryColor;
           }
+        }
+
+        // overwrites dialog wrapper styles
+        &:not(:last-child) {
+          border-bottom: unset;
         }
 
         &:first-child {
