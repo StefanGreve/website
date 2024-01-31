@@ -13,12 +13,12 @@ import { Component, ViewEncapsulation } from "@angular/core";
 export class DialogComponent {
   public visible: boolean = false;
 
-  public openDialog(): void {
+  public open(): void {
     this.visible = true;
     document.body.classList.add("adv-dialog-open");
   }
 
-  public closeDialog(): void {
+  public close(): void {
     this.visible = false;
     document.body.classList.remove("adv-dialog-open");
   }
