@@ -25,5 +25,5 @@ export const lightTheme: ThemeDefinition = {
   scrollbarColor: "#6c757d",
   scrollbarTrack: "#ffffff",
   backgroundBorder: "#ededed",
-  surfaceBorder: "#6c757d",
+  surfaceBorder: "#e5e5e5",
 };

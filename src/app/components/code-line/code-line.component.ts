@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, HostBinding, Input } from "@angular/core";
 import { v4 as uuid } from "uuid";
 import { Utils } from "../../lib/utils";
 import { CommonModule } from "@angular/common";
@@ -16,9 +16,8 @@ import { matCheckOutline, matContentCopyOutline } from "@ng-icons/material-icons
 export class CodeLineComponent {
   public readonly DEFAULT_ICON: string = "matContentCopyOutline";
   public readonly ACTIVE_ICON: string = "matCheckOutline";
-
-  public readonly id: string;
-  public icon!: string;
+  public readonly id: string = `adv__code__${uuid()}`;
+  public icon: string = this.DEFAULT_ICON;
 
   @Input()
   code?: string;
@@ -26,10 +25,9 @@ export class CodeLineComponent {
   @Input()
   title: string | undefined;
 
-
-  constructor() {
-    this.id = `code__${uuid()}`;
-    this.icon = this.DEFAULT_ICON;
+  @HostBinding("attr.title")
+  get getTitle(): null {
+    return null;
   }
 
   onClickCopy(): void {

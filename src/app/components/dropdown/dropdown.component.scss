@@ -51,8 +51,8 @@ div.adv-dropdown {
         button {
           @include typo.p;
           text-align: start;
-          color: theme.$onSurfaceColor;
-          background-color: theme.$surfaceColor;
+          color: theme.$onBackgroundColor;
+          background-color: theme.$backgroundColor;
           border: unset;
           width: 100%;
           height: auto;
@@ -62,8 +62,8 @@ div.adv-dropdown {
           -webkit-tap-highlight-color: transparent;
           user-select: none;
           cursor: pointer;
-          border-bottom: 1px solid theme.$surfaceBorder;
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 20%);
+          border-bottom: 1px solid theme.$backgroundBorder;
+          box-shadow: -2px 0px 2px rgba(0, 0, 0, 20%);
 
           &:disabled {
             @include tb.disabled;

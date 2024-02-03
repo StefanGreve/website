@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { AfterViewInit, Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
 import { NavigationItem } from "./interfaces/navigation-item";
 import { ThemeSwitcherService } from "./services/theme-switcher.service";
 import { Item } from "./interfaces/item";
-import Enumerable from "./lib/Enumerable";
 import { Button } from "./interfaces/button";
 import { State } from "./enums/state";
 import { AlertComponent } from "./components/alert/alert.component";
@@ -15,10 +14,10 @@ import { AlertComponent } from "./components/alert/alert.component";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   isDarkThemeEnabled = false;
 
-  languages: Array<Item> = new Enumerable([
+  languages: Item[] = [
     {
       label: "English",
     },
@@ -29,32 +28,41 @@ export class AppComponent implements AfterViewInit, OnInit {
       label: "Japanese",
       disabled: true,
     }
-  ]).sort();
+  ];
 
   @ViewChild(AlertComponent, {static: false})
   alert: AlertComponent | undefined;
 
   alertSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+  alertSubscription: Subscription = new Subscription();
+
   @ViewChild(DialogComponent, {static: false})
   settingsDialog: DialogComponent | undefined;
 
   settingsSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  settingsSubscription: Subscription = new Subscription();
 
   ngOnInit(): void {
     this.isDarkThemeEnabled = this.themeService.getActiveTheme === Theme.Dark;
   }
 
   ngAfterViewInit(): void {
-    this.alertSubject$?.subscribe(state => {
+    this.alertSubscription = this.alertSubject$?.subscribe(state => {
       if (state) this.alert?.open();
       else this.alert?.close();
     });
 
-    this.settingsSubject$?.subscribe(state => {
+    this.settingsSubscription = this.settingsSubject$?.subscribe(state => {
       if (state) this.settingsDialog?.open();
       else this.settingsDialog?.close();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.settingsSubscription.unsubscribe();
+    this.alertSubscription.unsubscribe();
   }
 
   constructor(private themeService: ThemeSwitcherService) {

@@ -1,4 +1,4 @@
-<div *ngIf="!hidden" class="adv-dropdown" clickedOutside (clickedOutside)="close()">
+<div *ngIf="!hidden" class="adv-dropdown" advClickOutside (clickedOutside)="close()">
   <label [for]=id><ng-content /></label>
   <button
     type="button"
@@ -8,7 +8,7 @@
     (click)=open()
   >
     {{ selectedOption }}
-    <ng-icon name="matKeyboardArrowDownOutline"></ng-icon>
+    <ng-icon [name]=icon></ng-icon>
   </button>
   <ul [id]=id>
     @for (option of options; track option) {

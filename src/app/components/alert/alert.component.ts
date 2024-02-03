@@ -13,12 +13,12 @@ import { v4 as uuid } from "uuid";
   imports: [CommonModule]
 })
 export class AlertComponent implements OnInit {
-  public id!: string;
+  public readonly id: string = `adv__alert__${uuid()}`;
   public State = State;
   public visible: boolean = false;
 
   @Input()
-  public title: string | undefined;
+  public title: string = "Alert";
 
   @HostBinding("attr.title")
   get getTitle(): null {
@@ -44,9 +44,6 @@ export class AlertComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = `alert__${uuid()}`;
-    this.title ??= "Alert";
-
     // if there are only two buttons, then the primary button should be placed
     // on the right-hand side
     if (this.actions?.length === 2) {

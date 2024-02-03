@@ -15,25 +15,24 @@ import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.dire
   viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
 })
 export class DropdownComponent implements OnInit {
-  public id!: string;
-  public icon!: string;
-  public selectedOption?: string;
+  public readonly id: string = `adv__dropdown__${uuid()}`;
+  public readonly icon: string = "matKeyboardArrowDownOutline";
+  public selectedOption: string | undefined;
   public isOpened = false;
 
   @Input()
   public options?: Item[];
 
   @Input()
-  public hidden?: boolean;
+  public hidden: boolean = false;
 
   @Input()
-  public disabled?: boolean;
+  public disabled: boolean = false;
 
   @Output()
   public changeOption: EventEmitter<string> = new EventEmitter();
 
   public ngOnInit(): void {
-    this.id = `dropdown__${uuid()}`;
     this.selectedOption = this.options?.at(0)?.label;
   }
 
