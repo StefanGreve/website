@@ -1,0 +1,24 @@
+<div *ngIf="visible" class="adv-alert" [id]=id>
+  <div class="adv-alert-body">
+    <h2>
+      {{ title }}
+    </h2>
+    <p>
+      {{ content }}
+    </p>
+  </div>
+  <div class="adv-alert-actions">
+    @for (action of actions; track action) {
+      <button
+        *ngIf="!action.hidden"
+        type="button"
+        [disabled]=action.disabled
+        [attr.data-state]="action.state ?? State.Default"
+        aria-label=action.label
+        (click)=action?.action()
+      >
+        {{ action.label }}
+      </button>
+    }
+  </div>
+</div>

@@ -15,41 +15,39 @@ import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.dire
   viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
 })
 export class DropdownComponent implements OnInit {
-  public id!: string;
-  public icon!: string;
-  public selectedOption?: string;
-  private dropdownButton?: HTMLButtonElement;
+  public readonly id: string = `adv__dropdown__${uuid()}`;
+  public readonly icon: string = "matKeyboardArrowDownOutline";
+  public selectedOption: string | undefined;
+  public isOpened = false;
 
   @Input()
   public options?: Item[];
 
   @Input()
-  public hidden?: boolean;
+  public hidden: boolean = false;
 
   @Input()
-  public disabled?: boolean;
+  public disabled: boolean = false;
 
   @Output()
   public changeOption: EventEmitter<string> = new EventEmitter();
 
   public ngOnInit(): void {
-    this.id = `dropdown__${uuid()}`;
     this.selectedOption = this.options?.at(0)?.label;
   }
 
-  public openOptions(event: Event): void {
-    this.dropdownButton = event.target as HTMLButtonElement;
-    this.dropdownButton?.classList.toggle("active");
+  public open(): void {
+    this.isOpened = true;
   }
 
   public selectOption(event: Event): void {
     const target = event.target as HTMLLIElement;
     this.selectedOption = target.innerHTML;
     this.changeOption.emit(this.selectedOption);
-    this.dropdownButton?.classList.remove("active");
+    this.isOpened = false;
   }
 
-  public closeDropdown(): void {
-    this.dropdownButton?.classList.remove("active");
+  public close(): void {
+    this.isOpened = false;
   }
 }

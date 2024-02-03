@@ -1,0 +1,19 @@
+@mixin blurry-background {
+  &::before {
+    content: '';
+    backdrop-filter: blur(4px) !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin disabled {
+  cursor: not-allowed;
+  // TODO: find a way to apply opacity only to foreground and background colors
+  opacity: 50%;
+}
