@@ -1,5 +1,5 @@
 export interface Item {
-  label: string;
+  label?: string;
   disabled?: boolean;
   hidden?: boolean;
 }

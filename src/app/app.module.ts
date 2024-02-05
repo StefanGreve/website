@@ -8,6 +8,8 @@ import { DialogComponent } from "./components/dialog/dialog.component";
 import { SwitchComponent } from "./components/switch/switch.component";
 import { DropdownComponent } from "./components/dropdown/dropdown.component";
 import { AlertComponent } from "./components/alert/alert.component";
+import { SortByPipe } from "./pipes/sort-by/sort-by.pipe";
+import { DropPipe } from "./pipes/drop/drop.pipe";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AlertComponent } from "./components/alert/alert.component";
     DialogComponent,
     DropdownComponent,
     NavigationComponent,
+    SortByPipe,
+    DropPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

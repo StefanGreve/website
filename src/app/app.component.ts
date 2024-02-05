@@ -127,6 +127,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       label: "Fire Missiles",
       action: () => console.log("🔥"),
       state: State.Danger,
+      disabled: true,
     },
   ];
 }
