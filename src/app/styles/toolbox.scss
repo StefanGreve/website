@@ -1,3 +1,5 @@
+@use "theme.scss";
+
 @mixin blurry-background {
   &::before {
     content: '';
@@ -16,4 +18,31 @@
   cursor: not-allowed;
   // TODO: find a way to apply opacity only to foreground and background colors
   opacity: 50%;
+}
+
+@mixin state-color {
+  // default
+  &[data-state="0"] {
+    color: theme.$neutralColor;
+  }
+
+  // success
+  &[data-state="1"] {
+    color: theme.$successColor;
+  }
+
+  // info
+  &[data-state="2"] {
+    color: theme.$infoColor;
+  }
+
+  // warning
+  &[data-state="3"] {
+    color: theme.$warningColor;
+  }
+
+  // danger
+  &[data-state="4"] {
+    color: theme.$errorColor;
+  }
 }

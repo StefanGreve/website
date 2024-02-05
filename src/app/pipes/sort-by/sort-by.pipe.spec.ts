@@ -34,14 +34,14 @@ describe("App.Pipes.SortByPipe", () => {
   });
 
   it("should return an empty array in response to an undefined source", () => {
-    const result = pipe.transform(undefined, "name").map((o) => o.name);
+    const result = pipe.transform(undefined, "name").map((i) => i.name);
     const expected = new Array<string>();
 
     expect(result).toEqual(expected);
   });
 
   it("should sort an array of elements by property in ascending order", () => {
-    const result = pipe.transform(array, "label").map((o) => o.label);
+    const result = pipe.transform(array, "label").map((i) => i.label);
     const expected = [undefined, "Anneliese", "Monika", "Stefan", "Steven"];
 
     expect(result).toEqual(expected);
