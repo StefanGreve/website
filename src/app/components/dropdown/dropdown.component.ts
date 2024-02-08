@@ -5,6 +5,8 @@ import { v4 as uuid } from "uuid";
 import { NgIconComponent, provideIcons } from "@ng-icons/core";
 import { matKeyboardArrowDownOutline } from "@ng-icons/material-icons/outline";
 import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.directive";
+import { HiddenDirective } from "src/app/directives/inputs/hidden.directive";
+import { DisabledDirective } from "src/app/directives/inputs/disabled.directive";
 
 @Component({
   selector: "adv-dropdown",
@@ -12,7 +14,17 @@ import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.dire
   imports: [CommonModule, NgIconComponent, ClickedOutsideDirective],
   templateUrl: "./dropdown.component.html",
   styleUrl: "./dropdown.component.scss",
-  viewProviders: [provideIcons({ matKeyboardArrowDownOutline })]
+  viewProviders: [provideIcons({ matKeyboardArrowDownOutline })],
+  hostDirectives: [
+    {
+      directive: HiddenDirective,
+      inputs: ["hidden"],
+    },
+    {
+      directive: DisabledDirective,
+      inputs: ["disabled"],
+    }
+  ]
 })
 export class DropdownComponent implements OnInit {
   public readonly id: string = `adv__dropdown__${uuid()}`;
@@ -20,20 +32,23 @@ export class DropdownComponent implements OnInit {
   public selectedOption: string | undefined;
   public isOpened = false;
 
+  // directive inputs
+  public hidden: boolean | undefined;
+  public disabled: boolean | undefined;
+
   @Input()
   public options?: Item[];
-
-  @Input()
-  public hidden: boolean = false;
-
-  @Input()
-  public disabled: boolean = false;
 
   @Output()
   public changeOption: EventEmitter<string> = new EventEmitter();
 
+  // eslint-disable-next-line no-unused-vars
+  constructor(public hiddenDirective: HiddenDirective, public disabledDirective: DisabledDirective) { }
+
   public ngOnInit(): void {
     this.selectedOption = this.options?.at(0)?.label;
+    this.hidden = this.hiddenDirective.hidden;
+    this.disabled = this.disabledDirective.disabled;
   }
 
   public open(): void {

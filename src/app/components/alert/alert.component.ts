@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { TitleDirective } from "src/app/directives/inputs/title.directive";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
 import { v4 as uuid } from "uuid";
@@ -10,20 +11,22 @@ import { v4 as uuid } from "uuid";
   templateUrl: "./alert.component.html",
   styleUrl: "./alert.component.scss",
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  hostDirectives: [
+    {
+      directive: TitleDirective,
+      inputs: ["title"],
+    },
+  ]
 })
 export class AlertComponent implements OnInit {
   public readonly id: string = `adv__alert__${uuid()}`;
+  private readonly alertClass = "adv-alert-open";
   public State = State;
-  public visible: boolean = false;
+  public hidden: boolean = true;
 
-  @Input()
-  public title: string = "Alert";
-
-  @HostBinding("attr.title")
-  get getTitle(): null {
-    return null;
-  }
+  // directive inputs
+  public title: string | undefined;
 
   @Input()
   public content?: string;
@@ -31,23 +34,28 @@ export class AlertComponent implements OnInit {
   @Input()
   public actions?: Button[];
 
-  public open() {
-    console.log("opening alert");
-    this.visible = true;
-    document.body.classList.add("adv-alert-open");
-  }
-
-  public close() {
-    console.log("closing alert");
-    this.visible = false;
-    document.body.classList.remove("adv-alert-open");
-  }
+  // eslint-disable-next-line no-unused-vars
+  constructor(public titleDirective: TitleDirective) { }
 
   ngOnInit(): void {
+    this.title = this.titleDirective.title;
+
     // if there are only two buttons, then the primary button should be placed
     // on the right-hand side
     if (this.actions?.length === 2) {
         this.actions?.reverse();
     }
+  }
+
+  public open() {
+    console.log("opening alert");
+    this.hidden = false;
+    document.body.classList.add(this.alertClass);
+  }
+
+  public close() {
+    console.log("closing alert");
+    this.hidden = true;
+    document.body.classList.remove(this.alertClass);
   }
 }
