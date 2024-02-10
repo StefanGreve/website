@@ -35,7 +35,7 @@ export class AlertComponent implements OnInit {
   public actions?: Button[];
 
   // eslint-disable-next-line no-unused-vars
-  constructor(public titleDirective: TitleDirective) { }
+  constructor(private titleDirective: TitleDirective) { }
 
   ngOnInit(): void {
     this.title = this.titleDirective.title;

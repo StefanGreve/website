@@ -34,7 +34,7 @@ export class CodeLineComponent implements OnInit {
   code?: string;
 
   // eslint-disable-next-line no-unused-vars
-  constructor(public titleDirective: TitleDirective) { }
+  constructor(private titleDirective: TitleDirective) { }
 
   ngOnInit(): void {
     this.title = this.titleDirective.title;

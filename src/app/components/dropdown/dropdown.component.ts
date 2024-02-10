@@ -43,7 +43,7 @@ export class DropdownComponent implements OnInit {
   public changeOption: EventEmitter<string> = new EventEmitter();
 
   // eslint-disable-next-line no-unused-vars
-  constructor(public hiddenDirective: HiddenDirective, public disabledDirective: DisabledDirective) { }
+  constructor(private hiddenDirective: HiddenDirective, private disabledDirective: DisabledDirective) { }
 
   public ngOnInit(): void {
     this.selectedOption = this.options?.at(0)?.label;
