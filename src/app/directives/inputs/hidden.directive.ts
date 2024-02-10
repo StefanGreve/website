@@ -6,7 +6,7 @@ import { Directive, HostBinding, Input } from "@angular/core";
 })
 export class HiddenDirective {
   @Input()
-  public hidden = false;
+  public hidden: boolean | undefined = undefined;
 
   @HostBinding("attr.hidden")
   protected get nativeHidden(): true | null {

@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
+import { HiddenDirective } from "src/app/directives/inputs/hidden.directive";
 import { TitleDirective } from "src/app/directives/inputs/title.directive";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
@@ -10,23 +11,26 @@ import { v4 as uuid } from "uuid";
   standalone: true,
   templateUrl: "./alert.component.html",
   styleUrl: "./alert.component.scss",
-  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
   hostDirectives: [
     {
       directive: TitleDirective,
       inputs: ["title"],
     },
+    {
+      directive: HiddenDirective,
+      inputs: ["hidden"],
+    }
   ]
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent implements OnInit, AfterViewInit {
   public readonly id: string = `adv__alert__${uuid()}`;
-  private readonly alertClass = "adv-alert-open";
   public State = State;
-  public hidden: boolean = true;
 
   // directive inputs
   public title: string | undefined;
+  public hidden: boolean | undefined;
 
   @Input()
   public content?: string;
@@ -35,10 +39,11 @@ export class AlertComponent implements OnInit {
   public actions?: Button[];
 
   // eslint-disable-next-line no-unused-vars
-  constructor(private titleDirective: TitleDirective) { }
+  constructor(private titleDirective: TitleDirective, private hiddenDirective: HiddenDirective, private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.title = this.titleDirective.title;
+    this.hidden = this.hiddenDirective.hidden ?? true;
 
     // if there are only two buttons, then the primary button should be placed
     // on the right-hand side
@@ -47,15 +52,24 @@ export class AlertComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    this.ref.detectChanges();
+  }
+
   public open() {
-    console.log("opening alert");
+    console.debug(`[${this.id}] Opening alert`);
     this.hidden = false;
-    document.body.classList.add(this.alertClass);
+    this.ref.markForCheck();
   }
 
   public close() {
-    console.log("closing alert");
+    console.debug(`[${this.id}] Closing alert`);
     this.hidden = true;
-    document.body.classList.remove(this.alertClass);
+
+    if (!this.hiddenDirective.hidden && !this.hidden) {
+      console.log("inside close if");
+      this.hidden = false;
+      this.ref.markForCheck();
+    }
   }
 }
