@@ -3,8 +3,8 @@
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
 
-body.adv-dialog-open {
-  @include tb.blurry-background;
+div.adv-overlay {
+  @include tb.overlay;
 }
 
 div.adv-dialog {
