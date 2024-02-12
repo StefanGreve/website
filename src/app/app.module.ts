@@ -10,6 +10,7 @@ import { DropdownComponent } from "./components/dropdown/dropdown.component";
 import { AlertComponent } from "./components/alert/alert.component";
 import { SortByPipe } from "./pipes/sort-by/sort-by.pipe";
 import { DropPipe } from "./pipes/drop/drop.pipe";
+import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DropPipe } from "./pipes/drop/drop.pipe";
   ],
   imports: [
     AlertComponent,
+    ActionSheetComponent,
     BrowserModule,
     CodeLineComponent,
     SwitchComponent,

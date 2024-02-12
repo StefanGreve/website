@@ -1,0 +1,11 @@
+@use "../../styles/toolbox.scss" as tb;
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/typography.scss" as typo;
+
+div.adv-overlay {
+  @include tb.overlay;
+}
+
+div.adv-action-sheet {
+  // TODO
+}
