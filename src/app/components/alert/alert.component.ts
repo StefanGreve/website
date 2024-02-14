@@ -29,8 +29,8 @@ export class AlertComponent implements OnInit {
   @Input()
   public content: string | undefined;
 
-  @Input()
-  public actions: Button[] | undefined;
+  @Input({ required: true })
+  public actions!: Button[];
 
   // eslint-disable-next-line no-unused-vars
   constructor(private titleDirective: TitleDirective) { }
@@ -40,8 +40,8 @@ export class AlertComponent implements OnInit {
 
     // if there are only two buttons, then the primary button should be placed
     // on the right-hand side
-    if (this.actions?.length === 2) {
-        this.actions?.reverse();
+    if (this.actions.length === 2) {
+        this.actions.reverse();
     }
   }
 
