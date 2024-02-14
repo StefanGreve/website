@@ -1,4 +1,17 @@
 <div *ngIf="!hidden" class="adv-overlay"></div>
 <div *ngIf="true" class="adv-action-sheet" [id]=id>
-  ActionSheet Works
+  <div class="adv-action-sheet-actions">
+    @for (action of actions; track action) {
+      <button
+        *ngIf="!action.hidden"
+        type="button"
+        [disabled]=action.disabled
+        [attr.data-state]="action.state ?? State.Default"
+        aria-label=action.label
+        (click)=action?.action()
+      >
+        {{ action.label }}
+      </button>
+    }
+  </div>
 </div>

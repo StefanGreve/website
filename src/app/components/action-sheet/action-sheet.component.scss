@@ -6,6 +6,49 @@ div.adv-overlay {
   @include tb.overlay;
 }
 
+@keyframes fly-in {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 div.adv-action-sheet {
-  // TODO
+  position: absolute;
+  bottom: 1em;
+  text-align: center;
+  animation: fly-in 1s forwards;
+  // TODO: center components with media queries
+
+  &-actions {
+    display: flex;
+    flex-direction: column;
+
+    // actions
+    button {
+      all: unset;
+      @include tb.state-color;
+      border-radius: 13px;
+      height: 54px;
+      width: 100%;
+      cursor: pointer;
+      background-color: aqua;
+
+      &:disabled {
+        @include tb.disabled;
+      }
+    }
+
+    // user actions
+    & > button:not(:last-child) {
+      // TODO: only first and last children here should define a border radius
+    }
+
+    // cancel action
+    & > button:last-child {
+      font-weight: bold;
+    }
+  }
 }
