@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { v4 as uuid } from "uuid";
 
 @Component({
@@ -7,6 +7,7 @@ import { v4 as uuid } from "uuid";
   standalone: true,
   templateUrl: "./dialog.component.html",
   styleUrl: "./dialog.component.scss",
+  encapsulation: ViewEncapsulation.None,
   imports: [CommonModule]
 })
 export class DialogComponent {
@@ -20,5 +21,6 @@ export class DialogComponent {
 
   public close(): void {
     console.trace(`[${this.id}] Closing dialog`);
+    this.hidden = true;
   }
 }
