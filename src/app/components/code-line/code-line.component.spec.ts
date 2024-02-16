@@ -8,7 +8,7 @@ describe("CodeLineComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CodeLineComponent]
+      imports: [CodeLineComponent]
     });
     fixture = TestBed.createComponent(CodeLineComponent);
     component = fixture.componentInstance;

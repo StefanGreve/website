@@ -42,7 +42,7 @@ describe("App.Pipes.SortByPipe", () => {
 
   it("should sort an array of elements by property in ascending order", () => {
     const result = pipe.transform(array, "label").map((i) => i.label);
-    const expected = [undefined, "Anneliese", "Monika", "Stefan", "Steven"];
+    const expected = [undefined, "Anneliese", "Monika", "Stefan", "Steven", "Thomas"];
 
     expect(result).toEqual(expected);
   });

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { AlertComponent } from "./alert.component";
+import { Button } from "src/app/interfaces/button";
 
 describe("AlertComponent", () => {
   let component: AlertComponent;
@@ -14,6 +15,11 @@ describe("AlertComponent", () => {
 
     fixture = TestBed.createComponent(AlertComponent);
     component = fixture.componentInstance;
+    component.actions = [
+      {
+        label: "Ok"
+      }
+    ] as Button[];
     fixture.detectChanges();
   });
 
