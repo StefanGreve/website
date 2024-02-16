@@ -15,12 +15,12 @@ export class DialogComponent {
   public hidden: boolean = true;
 
   public open(): void {
-    console.trace(`[${this.id}] Opening dialog`);
+    console.debug(`[${this.id}] Opening dialog`);
     this.hidden = false;
   }
 
   public close(): void {
-    console.trace(`[${this.id}] Closing dialog`);
+    console.debug(`[${this.id}] Closing dialog`);
     this.hidden = true;
   }
 }

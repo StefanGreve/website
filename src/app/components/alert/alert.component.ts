@@ -46,13 +46,13 @@ export class AlertComponent implements OnInit {
   }
 
   public open() {
-    console.trace(`[${this.id}] Opening alert`);
+    console.debug(`[${this.id}] Opening alert`);
     this.hidden = false;
 
   }
 
   public close() {
-    console.trace(`[${this.id}] Closing alert`);
+    console.debug(`[${this.id}] Closing alert`);
     this.hidden = true;
   }
 }
