@@ -1,3 +1,4 @@
+@use "breakpoints.scss" as bp;
 @use "theme.scss";
 
 @mixin blurry-background {
@@ -21,6 +22,35 @@
   position: fixed;
   top: 0;
   left: 0;
+}
+
+@mixin center-content($margin-lr: 0px) {
+  width: -moz-available;
+  width: -webkit-fill-available;
+
+  @supports (width: stretch) {
+    width: stretch;
+  }
+
+  margin-left: $margin-lr;
+  margin-right: $margin-lr;
+
+  @include bp.for-size(bp.$xs) {
+    // offset mysterious surplus margin to the right
+    margin-right: calc(1em + $margin-lr - 16px);
+  }
+
+  @include bp.for-size(bp.$sm) {
+    margin-right: calc(2.5em + $margin-lr);
+  }
+
+  @include bp.for-size(bp.$md) {
+    margin-right: calc(6em + $margin-lr);
+  }
+
+  @include bp.for-size(bp.$xl) {
+    margin-right: calc(20% + $margin-lr);
+  }
 }
 
 @mixin disabled {

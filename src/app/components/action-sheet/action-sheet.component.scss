@@ -15,40 +15,58 @@ div.adv-overlay {
   }
 }
 
+$borderRadius: 13px;
+
 div.adv-action-sheet {
+  @include tb.center-content($margin-lr: 2em);
   position: absolute;
   bottom: 1em;
   text-align: center;
   animation: fly-in 1s forwards;
-  // TODO: center components with media queries
+  text-align: center;
 
   &-actions {
     display: flex;
     flex-direction: column;
 
-    // actions
+    // all actions
     button {
       all: unset;
       @include tb.state-color;
-      border-radius: 13px;
       height: 54px;
       width: 100%;
+      min-width: 250px;
       cursor: pointer;
-      background-color: aqua;
+      background-color: theme.$backgroundColor;
+
+      // all custom actions
+      &:not(:last-child) {
+        border-bottom: 1px solid theme.$backgroundBorder;
+      }
+
+      // first custom action
+      &:first-child {
+        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
+      }
+
+      // last custom action
+      &:nth-last-child(2) {
+        border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+        border-bottom: unset;
+      }
+
+      // cancel button
+      &:last-child {
+        margin-top: 1.3em;
+        font-weight: bold;
+        border-radius: $borderRadius;
+      }
 
       &:disabled {
         @include tb.disabled;
       }
-    }
-
-    // user actions
-    & > button:not(:last-child) {
-      // TODO: only first and last children here should define a border radius
-    }
-
-    // cancel action
-    & > button:last-child {
-      font-weight: bold;
     }
   }
 }

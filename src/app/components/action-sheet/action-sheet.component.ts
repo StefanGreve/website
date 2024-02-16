@@ -13,6 +13,7 @@ import { State } from "src/app/enums/state";
 })
 export class ActionSheetComponent implements OnInit {
   public readonly id: string = `adv__action_sheet__${uuid()}`;
+  public "class" = ActionSheetComponent;
   public State = State;
 
   public readonly cancel: Button = {
@@ -21,23 +22,22 @@ export class ActionSheetComponent implements OnInit {
     state: State.Info,
   };
 
-  public hidden: boolean = true;
+  public static hidden: boolean = true;
 
   @Input({ required: true })
   public actions!: Button[];
 
   ngOnInit(): void {
-    this.actions.reverse();
     this.actions.push(this.cancel);
   }
 
   public open() {
-    console.trace(`[${this.id}] Opening action sheet`);
-    this.hidden = false;
+    console.debug(`[${this.id}] Opening action sheet`);
+    ActionSheetComponent.hidden = false;
   }
 
   public close() {
-    console.trace(`[${this.id}] Closing action sheet`);
-    this.hidden = true;
+    console.debug(`[${this.id}] Closing action sheet`);
+    ActionSheetComponent.hidden = true;
   }
 }

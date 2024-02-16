@@ -8,6 +8,7 @@ import { Item } from "./interfaces/item";
 import { Button } from "./interfaces/button";
 import { State } from "./enums/state";
 import { AlertComponent } from "./components/alert/alert.component";
+import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
 
 @Component({
   selector: "adv-root",
@@ -44,6 +45,13 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
 
   settingsSubscription: Subscription = new Subscription();
 
+  @ViewChild(ActionSheetComponent, {static: false})
+  actionSheet: ActionSheetComponent | undefined;
+
+  actionSheetSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  actionSheetSubscription: Subscription = new Subscription();
+
   ngOnInit(): void {
     this.isDarkThemeEnabled = this.themeService.getActiveTheme === Theme.Dark;
   }
@@ -58,11 +66,17 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       if (state) this.settingsDialog?.open();
       else this.settingsDialog?.close();
     });
+
+    this.actionSheetSubscription = this.actionSheetSubject$.subscribe(state => {
+      if (state) this.actionSheet?.open();
+      else this.actionSheet?.close();
+    });
   }
 
   ngOnDestroy(): void {
     this.settingsSubscription.unsubscribe();
     this.alertSubscription.unsubscribe();
+    this.actionSheetSubscription.unsubscribe();
   }
 
   constructor(private themeService: ThemeSwitcherService) {
@@ -83,6 +97,14 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
 
   public closeSettings = () => {
     this.settingsSubject$.next(false);
+  };
+
+  public openActionSheet = () => {
+    this.actionSheetSubject$.next(true);
+  };
+
+  public closeActionSheet = () => {
+    this.actionSheetSubject$.next(false);
   };
 
   public toggleTheme() {
@@ -117,7 +139,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   ];
 
-  testAlert: Button[] = [
+  alertActions: Button[] = [
     {
       label: "Ok",
       action: this.closeAlert,
@@ -129,5 +151,16 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       state: State.Danger,
       disabled: true,
     },
+  ];
+
+  actionSheetActions: Button[] = [
+    {
+      label: "Option 1",
+      action: this.closeActionSheet,
+    },
+    {
+      label: "Option 2",
+      action: this.closeActionSheet,
+    }
   ];
 }
