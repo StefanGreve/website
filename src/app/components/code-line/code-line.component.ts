@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, inject } from "@angular/core";
 import { v4 as uuid } from "uuid";
 import { Utils } from "../../lib/utils";
 import { CommonModule } from "@angular/common";
@@ -21,11 +21,8 @@ import { TitleDirective } from "src/app/directives/inputs/title.directive";
   ]
 })
 export class CodeLineComponent implements OnInit {
-  public readonly DEFAULT_ICON: string = "matContentCopyOutline";
-  public readonly ACTIVE_ICON: string = "matCheckOutline";
-  public readonly id: string = `adv__code__${uuid()}`;
-  public readonly buttonActiveClass = "active";
-  public icon: string = this.DEFAULT_ICON;
+  // dependency injection
+  private titleDirective = inject(TitleDirective);
 
   // directive inputs
   public title: string | undefined;
@@ -33,8 +30,12 @@ export class CodeLineComponent implements OnInit {
   @Input()
   code?: string;
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(private titleDirective: TitleDirective) { }
+  // public fields
+  public readonly DEFAULT_ICON: string = "matContentCopyOutline";
+  public readonly ACTIVE_ICON: string = "matCheckOutline";
+  public readonly id: string = `adv__code__${uuid()}`;
+  public readonly buttonActiveClass = "active";
+  public icon: string = this.DEFAULT_ICON;
 
   ngOnInit(): void {
     this.title = this.titleDirective.title;

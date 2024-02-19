@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { Component, OnInit, ViewChild, inject } from "@angular/core";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
 import { NavigationItem } from "./interfaces/navigation-item";
@@ -13,12 +12,15 @@ import { ActionSheetComponent } from "./components/action-sheet/action-sheet.com
 @Component({
   selector: "adv-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
-  isDarkThemeEnabled = false;
+export class AppComponent implements OnInit {
+  // dependency injection
+  private themeSwitcherService = inject(ThemeSwitcherService);
 
-  languages: Item[] = [
+  public isDarkThemeEnabled = false;
+
+  public languages: Item[] = [
     {
       label: "English",
     },
@@ -32,84 +34,46 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   ];
 
   @ViewChild(AlertComponent, {static: false})
-  alert: AlertComponent | undefined;
-
-  alertSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  alertSubscription: Subscription = new Subscription();
+  private alert: AlertComponent | undefined;
 
   @ViewChild(DialogComponent, {static: false})
-  settingsDialog: DialogComponent | undefined;
-
-  settingsSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  settingsSubscription: Subscription = new Subscription();
+  private settingsDialog: DialogComponent | undefined;
 
   @ViewChild(ActionSheetComponent, {static: false})
-  actionSheet: ActionSheetComponent | undefined;
-
-  actionSheetSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  actionSheetSubscription: Subscription = new Subscription();
+  private actionSheet: ActionSheetComponent | undefined;
 
   ngOnInit(): void {
-    this.isDarkThemeEnabled = this.themeService.getActiveTheme === Theme.Dark;
-  }
-
-  ngAfterViewInit(): void {
-    this.alertSubscription = this.alertSubject$?.subscribe(state => {
-      if (state) this.alert?.open();
-      else this.alert?.close();
-    });
-
-    this.settingsSubscription = this.settingsSubject$?.subscribe(state => {
-      if (state) this.settingsDialog?.open();
-      else this.settingsDialog?.close();
-    });
-
-    this.actionSheetSubscription = this.actionSheetSubject$.subscribe(state => {
-      if (state) this.actionSheet?.open();
-      else this.actionSheet?.close();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.settingsSubscription.unsubscribe();
-    this.alertSubscription.unsubscribe();
-    this.actionSheetSubscription.unsubscribe();
-  }
-
-  constructor(private themeService: ThemeSwitcherService) {
-    console.log(`Active Theme: ${Theme[themeService.getActiveTheme]}`);
+    this.isDarkThemeEnabled = this.themeSwitcherService.getActiveTheme === Theme.Dark;
+    console.log(`Active Theme: ${Theme[this.themeSwitcherService.getActiveTheme]}`);
   }
 
   public openAlert = () => {
-    this.alertSubject$.next(true);
+    this.alert?.open();
   };
 
   public closeAlert = () => {
-    this.alertSubject$.next(false);
+    this.alert?.close();
   };
 
   public openSettings = () => {
-    this.settingsSubject$.next(true);
+    this.settingsDialog?.open();
   };
 
   public closeSettings = () => {
-    this.settingsSubject$.next(false);
+    this.settingsDialog?.close();
   };
 
   public openActionSheet = () => {
-    this.actionSheetSubject$.next(true);
+    this.actionSheet?.open();
   };
 
   public closeActionSheet = () => {
-    this.actionSheetSubject$.next(false);
+    this.actionSheet?.close();
   };
 
   public toggleTheme() {
-    const newTheme = this.themeService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
-    this.themeService.setTheme(newTheme);
+    const newTheme = this.themeSwitcherService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
+    this.themeSwitcherService.setTheme(newTheme);
     this.isDarkThemeEnabled = !this.isDarkThemeEnabled;
   }
 
@@ -117,7 +81,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     console.log(language);
   }
 
-  items: NavigationItem[] = [
+  public items: NavigationItem[] = [
     {
       label: "Login",
       href: "#",
@@ -139,7 +103,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   ];
 
-  alertActions: Button[] = [
+  public alertActions: Button[] = [
     {
       label: "Ok",
       action: this.closeAlert,
@@ -153,7 +117,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     },
   ];
 
-  actionSheetActions: Button[] = [
+  public actionSheetActions: Button[] = [
     {
       label: "Option 1",
       action: this.closeActionSheet,

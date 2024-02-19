@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, inject } from "@angular/core";
 import { TitleDirective } from "src/app/directives/inputs/title.directive";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
@@ -19,9 +19,8 @@ import { v4 as uuid } from "uuid";
   ]
 })
 export class AlertComponent implements OnInit {
-  public readonly id: string = `adv__alert__${uuid()}`;
-  public hidden: boolean = true;
-  public State = State;
+  // dependency injection
+  private titleDirective = inject(TitleDirective);
 
   // directive inputs
   public title: string | undefined;
@@ -32,8 +31,10 @@ export class AlertComponent implements OnInit {
   @Input({ required: true })
   public actions!: Button[];
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(private titleDirective: TitleDirective) { }
+  // public fields
+  public readonly id: string = `adv__alert__${uuid()}`;
+  public hidden: boolean = true;
+  public State = State;
 
   ngOnInit(): void {
     this.title = this.titleDirective.title;

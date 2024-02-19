@@ -11,6 +11,7 @@ import { v4 as uuid } from "uuid";
   imports: [CommonModule]
 })
 export class DialogComponent {
+  // public fields
   public readonly id: string = `adv__dialog__${uuid()}`;
   public hidden: boolean = true;
 

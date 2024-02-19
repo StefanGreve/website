@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Item } from "src/app/interfaces/item";
 import { v4 as uuid } from "uuid";
@@ -27,26 +27,28 @@ import { DisabledDirective } from "src/app/directives/inputs/disabled.directive"
   ]
 })
 export class DropdownComponent implements OnInit {
-  public readonly id: string = `adv__dropdown__${uuid()}`;
-  public readonly icon: string = "matKeyboardArrowDownOutline";
-  public selectedOption: string | undefined;
-  public isOpened = false;
+  // dependency injection
+  private hiddenDirective = inject(HiddenDirective);
+  private disabledDirective = inject(DisabledDirective);
 
   // directive inputs
   public hidden: boolean | undefined;
   public disabled: boolean | undefined;
 
-  @Input()
-  public options?: Item[];
+  @Input({ required: true })
+  public options!: Item[];
 
   @Output()
   public changeOption: EventEmitter<string> = new EventEmitter();
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(private hiddenDirective: HiddenDirective, private disabledDirective: DisabledDirective) { }
+  // public fields
+  public readonly id: string = `adv__dropdown__${uuid()}`;
+  public readonly icon: string = "matKeyboardArrowDownOutline";
+  public selectedOption: string | undefined;
+  public isOpened = false;
 
   public ngOnInit(): void {
-    this.selectedOption = this.options?.at(0)?.label;
+    this.selectedOption = this.options.at(0)?.label;
     this.hidden = this.hiddenDirective.hidden;
     this.disabled = this.disabledDirective.disabled;
   }

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { CheckedDirective } from "src/app/directives/inputs/checked.directive";
 import { DisabledDirective } from "src/app/directives/inputs/disabled.directive";
 import { HiddenDirective } from "src/app/directives/inputs/hidden.directive";
@@ -28,15 +28,18 @@ import { v4 as uuid } from "uuid";
   ]
 })
 export class SwitchComponent implements OnInit {
-  public id: string = `adv__switch__${uuid()}`;
+  // dependency injection
+  private hiddenDirective = inject(HiddenDirective);
+  private disabledDirective = inject(DisabledDirective);
+  private checkedDirective = inject(CheckedDirective);
 
   // directive inputs
   public hidden: boolean | undefined;
   public disabled: boolean | undefined;
   public checked: boolean | undefined;
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(private hiddenDirective: HiddenDirective, private disabledDirective: DisabledDirective, private checkedDirective: CheckedDirective) { }
+  // public fields
+  public id: string = `adv__switch__${uuid()}`;
 
   ngOnInit(): void {
     this.hidden = this.hiddenDirective.hidden;

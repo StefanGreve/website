@@ -12,6 +12,7 @@ import { State } from "src/app/enums/state";
   styleUrl: "./action-sheet.component.scss",
 })
 export class ActionSheetComponent implements OnInit {
+  // public fields
   public readonly id: string = `adv__action_sheet__${uuid()}`;
   public "class" = ActionSheetComponent;
   public State = State;
