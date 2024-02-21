@@ -1597,10 +1597,10 @@
   dependencies:
     call-bind "^1.0.2"
 
-"@ng-icons/core@^26.2.0":
-  version "26.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-icons/core/-/core-26.2.0.tgz#5784086aaa16866b1ee00525551666f4e861aaf8"
-  integrity sha512-+VbEQ2+Yr9FbQqFDwBNptNIpJHLNsp2k6ckkjRiuEMQSuvGAuKkpHy4gcIN7JwduKvL4j2j1UdB0K+91QYwkAQ==
+"@ng-icons/core@^26.3.0":
+  version "26.3.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/core/-/core-26.3.0.tgz#bcd8d5b201e47e5a43895cdc4591364b800396cf"
+  integrity sha512-4gUGz8yShbMX/4S2B4DzcQHrZ1+t29NqmYS70LScN0XMgiFmbg3uUW/Sc14fPiwmhHVNrKSMmX248U61uBZzGw==
   dependencies:
     tslib "^2.2.0"
 
