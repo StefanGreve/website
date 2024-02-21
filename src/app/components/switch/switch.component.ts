@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
+import { CheckedDirective } from "src/app/directives/inputs/checked.directive";
+import { DisabledDirective } from "src/app/directives/inputs/disabled.directive";
+import { HiddenDirective } from "src/app/directives/inputs/hidden.directive";
 import { v4 as uuid } from "uuid";
 
 
@@ -7,20 +11,39 @@ import { v4 as uuid } from "uuid";
   templateUrl: "./switch.component.html",
   styleUrl: "./switch.component.scss",
   standalone: true,
+  imports: [CommonModule],
+  hostDirectives: [
+    {
+      directive: HiddenDirective,
+      inputs: ["hidden"],
+    },
+    {
+      directive: DisabledDirective,
+      inputs: ["disabled"],
+    },
+    {
+      directive: CheckedDirective,
+      inputs: ["checked"],
+    }
+  ]
 })
 export class SwitchComponent implements OnInit {
-  public id!: string;
+  // dependency injection
+  private hiddenDirective = inject(HiddenDirective);
+  private disabledDirective = inject(DisabledDirective);
+  private checkedDirective = inject(CheckedDirective);
 
-  @Input()
-  public checked?: boolean;
+  // directive inputs
+  public hidden: boolean | undefined;
+  public disabled: boolean | undefined;
+  public checked: boolean | undefined;
 
-  @Input()
-  public disabled?: boolean;
+  // public fields
+  public id: string = `adv__switch__${uuid()}`;
 
-  @Input()
-  public hidden?: boolean;
-
-  public ngOnInit(): void {
-    this.id = `switch__${uuid()}`;
+  ngOnInit(): void {
+    this.hidden = this.hiddenDirective.hidden;
+    this.disabled = this.disabledDirective.disabled;
+    this.checked = this.checkedDirective.checked;
   }
 }

@@ -23,7 +23,6 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "adv",
             "style": "camelCase"
           }
         ],

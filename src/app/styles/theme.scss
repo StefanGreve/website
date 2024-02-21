@@ -1,3 +1,4 @@
+$name: var(--name);
 // default colors
 $neutralColor: var(--neutral-color);
 $neutralColorMuted: var(--neutral-color-muted);
@@ -20,3 +21,5 @@ $errorColor: var(--error-color);
 // miscellaneous colors
 $scrollbarColor: var(--scrollbar-color);
 $scrollbarTrack: var(--scrollbar-track);
+$backgroundBorder: var(--background-border);
+$surfaceBorder: var(--surface-border);

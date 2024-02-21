@@ -1,6 +1,7 @@
 import { ThemeDefinition } from "../interfaces/theme";
 
 export const darkTheme: ThemeDefinition = {
+  name: "dark",
   // default colors
   neutralColor: "#fafafa",
   neutralColorMuted: "#8a9198",
@@ -22,5 +23,7 @@ export const darkTheme: ThemeDefinition = {
   errorColor: "#ff453a",
   // miscellaneous colors
   scrollbarColor: "#4c4c4c",
-  scrollbarTrack: "#ffffff"
+  scrollbarTrack: "#ffffff",
+  backgroundBorder: "#262626",
+  surfaceBorder: "#000",
 };

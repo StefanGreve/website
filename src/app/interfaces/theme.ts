@@ -1,5 +1,6 @@
 export interface ThemeDefinition {
   [key: string]: string;
+  name: string;
   // default colors
   neutralColor: string;
   neutralColorMuted: string;
@@ -22,4 +23,6 @@ export interface ThemeDefinition {
   // miscellaneous colors
   scrollbarColor: string;
   scrollbarTrack: string;
+  backgroundBorder: string;
+  surfaceBorder: string;
 }

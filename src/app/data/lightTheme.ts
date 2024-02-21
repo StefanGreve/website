@@ -1,6 +1,7 @@
 import { ThemeDefinition } from "../interfaces/theme";
 
 export const lightTheme: ThemeDefinition = {
+  name: "light",
   // default colors
   neutralColor: "#0f172a",
   neutralColorMuted: "#6c757d",
@@ -22,5 +23,7 @@ export const lightTheme: ThemeDefinition = {
   errorColor: "#ff3b30",
   // miscellaneous colors
   scrollbarColor: "#6c757d",
-  scrollbarTrack: "#ffffff"
+  scrollbarTrack: "#ffffff",
+  backgroundBorder: "#ededed",
+  surfaceBorder: "#e5e5e5",
 };

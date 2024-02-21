@@ -5,20 +5,18 @@ import { Theme } from "../enums/theme";
 import { ThemeDefinition } from "../interfaces/theme";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ThemeSwitcherService {
   public readonly localStorageKey = "theme";
-  private readonly fallbackTheme = "Light";
 
-  constructor() {
-    const cachedTheme = Theme[this.getPreferredBrowserTheme];
-    const activeTheme = Theme[cachedTheme as keyof typeof Theme];
-    this.setTheme(activeTheme);
+  public initialize() {
+    const theme = this.getActiveTheme;
+    this.setTheme(theme);
   }
 
   private setIcon(theme: Theme): void {
-    const prevTheme = theme === Theme.Light ? "dark" : "light";
+    const prevTheme = (theme === Theme.Light) ? "dark" : "light";
     const activeTheme = Theme[theme].toLowerCase();
 
     document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
@@ -27,12 +25,14 @@ export class ThemeSwitcherService {
   }
 
   private createTheme(themeDefinition: ThemeDefinition): void {
+    const style = document.body.style;
+
     Object.keys(themeDefinition).forEach(key => {
       // Custom CSS properties (variables) require a double hyphen as leading
       // characters. By convention, TypeScript properties use camelCase which
       // we also replace here with a single hyphen character as a word separator
       const variable = `--${key.split(/(?=[A-Z])/).join("-").toLowerCase()}`;
-      document.documentElement.style.setProperty(variable, themeDefinition[key]);
+      style.setProperty(variable, themeDefinition[key]);
     });
   }
 

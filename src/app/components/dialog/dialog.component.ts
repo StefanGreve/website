@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, ViewEncapsulation } from "@angular/core";
-
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "adv-dialog",
@@ -11,15 +11,17 @@ import { Component, ViewEncapsulation } from "@angular/core";
   imports: [CommonModule]
 })
 export class DialogComponent {
-  public visible: boolean = false;
+  // public fields
+  public readonly id: string = `adv__dialog__${uuid()}`;
+  public hidden: boolean = true;
 
-  public openDialog(): void {
-    this.visible = true;
-    document.body.classList.add("adv-dialog-open");
+  public open(): void {
+    console.debug(`[${this.id}] Opening dialog`);
+    this.hidden = false;
   }
 
-  public closeDialog(): void {
-    this.visible = false;
-    document.body.classList.remove("adv-dialog-open");
+  public close(): void {
+    console.debug(`[${this.id}] Closing dialog`);
+    this.hidden = true;
   }
 }

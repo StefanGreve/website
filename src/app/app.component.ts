@@ -1,21 +1,26 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Component, OnInit, ViewChild, inject } from "@angular/core";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { Theme } from "./enums/theme";
 import { NavigationItem } from "./interfaces/navigation-item";
 import { ThemeSwitcherService } from "./services/theme-switcher.service";
 import { Item } from "./interfaces/item";
-import Enumerable from "./lib/Enumerable";
+import { Button } from "./interfaces/button";
+import { State } from "./enums/state";
+import { AlertComponent } from "./components/alert/alert.component";
+import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
 
 @Component({
   selector: "adv-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements AfterViewInit, OnInit {
-  isDarkThemeEnabled = false;
+export class AppComponent implements OnInit {
+  // dependency injection
+  private themeSwitcherService = inject(ThemeSwitcherService);
 
-  languages: Array<Item> = new Enumerable([
+  public isDarkThemeEnabled = false;
+
+  public languages: Item[] = [
     {
       label: "English",
     },
@@ -26,39 +31,49 @@ export class AppComponent implements AfterViewInit, OnInit {
       label: "Japanese",
       disabled: true,
     }
-  ]).sort();
+  ];
+
+  @ViewChild(AlertComponent, {static: false})
+  private alert: AlertComponent | undefined;
 
   @ViewChild(DialogComponent, {static: false})
-  settingsDialog: DialogComponent | undefined;
+  private settingsDialog: DialogComponent | undefined;
 
-  settingsSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  @ViewChild(ActionSheetComponent, {static: false})
+  private actionSheet: ActionSheetComponent | undefined;
 
   ngOnInit(): void {
-    this.isDarkThemeEnabled = this.themeService.getActiveTheme === Theme.Dark;
+    this.isDarkThemeEnabled = this.themeSwitcherService.getActiveTheme === Theme.Dark;
+    console.log(`Active Theme: ${Theme[this.themeSwitcherService.getActiveTheme]}`);
   }
 
-  ngAfterViewInit(): void {
-    this.settingsSubject$?.subscribe(state => {
-      if (state) this.settingsDialog?.openDialog();
-      else this.settingsDialog?.closeDialog();
-    });
-  }
+  public openAlert = () => {
+    this.alert?.open();
+  };
 
-  constructor(private themeService: ThemeSwitcherService) {
-    console.log(`Active Theme: ${Theme[themeService.getActiveTheme]}`);
-  }
+  public closeAlert = () => {
+    this.alert?.close();
+  };
 
   public openSettings = () => {
-    this.settingsSubject$.next(true);
+    this.settingsDialog?.open();
   };
 
   public closeSettings = () => {
-    this.settingsSubject$.next(false);
+    this.settingsDialog?.close();
+  };
+
+  public openActionSheet = () => {
+    this.actionSheet?.open();
+  };
+
+  public closeActionSheet = () => {
+    this.actionSheet?.close();
   };
 
   public toggleTheme() {
-    const newTheme = this.themeService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
-    this.themeService.setTheme(newTheme);
+    const newTheme = this.themeSwitcherService.getActiveTheme === Theme.Light ? Theme.Dark : Theme.Light;
+    this.themeSwitcherService.setTheme(newTheme);
     this.isDarkThemeEnabled = !this.isDarkThemeEnabled;
   }
 
@@ -66,7 +81,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     console.log(language);
   }
 
-  items: NavigationItem[] = [
+  public items: NavigationItem[] = [
     {
       label: "Login",
       href: "#",
@@ -78,12 +93,38 @@ export class AppComponent implements AfterViewInit, OnInit {
       external: true,
     },
     {
-      label: "WIP",
-      hidden: true,
+      label: "Alert",
+      hidden: false,
+      action: this.openAlert,
     },
     {
       label: "Settings",
       action: this.openSettings,
+    }
+  ];
+
+  public alertActions: Button[] = [
+    {
+      label: "Ok",
+      action: this.closeAlert,
+      state: State.Info,
+    },
+    {
+      label: "Fire Missiles",
+      action: () => console.log("🔥"),
+      state: State.Danger,
+      disabled: true,
+    },
+  ];
+
+  public actionSheetActions: Button[] = [
+    {
+      label: "Option 1",
+      action: this.closeActionSheet,
+    },
+    {
+      label: "Option 2",
+      action: this.closeActionSheet,
     }
   ];
 }
