@@ -1,11 +1,10 @@
-<div>
+<div *ngIf="!hidden">
   <label [for]=id><ng-content /></label>
   <input
     type="checkbox"
     [name]=id
     [id]=id
     [checked]=checked
-    [hidden]=hidden
     [disabled]=disabled
   >
   <label [for]=id [attr.aria-hidden]=true></label>

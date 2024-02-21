@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AlertComponent } from "./alert.component";
+import { ActionSheetComponent } from "./action-sheet.component";
 import { Button } from "src/app/interfaces/button";
 
-describe("AlertComponent", () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe("ActionSheetComponent", () => {
+  let component: ActionSheetComponent;
+  let fixture: ComponentFixture<ActionSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlertComponent]
+      imports: [ActionSheetComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(ActionSheetComponent);
     component = fixture.componentInstance;
     component.actions = [
       {
-        label: "Ok"
+        label: "Ok",
       }
     ] as Button[];
     fixture.detectChanges();

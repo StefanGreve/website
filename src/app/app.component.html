@@ -1,5 +1,5 @@
 <header>
-  <adv-navigation [items]=items />
+  <adv-navigation [items]="items | drop: 'hidden'" />
 </header>
 
 <main>
@@ -10,7 +10,7 @@
         <adv-switch [checked]=isDarkThemeEnabled (change)=toggleTheme()>Dark Theme</adv-switch>
       </li>
       <li>
-        <adv-dropdown [options]=languages (changeOption)=changeLanguage($event)>Language</adv-dropdown>
+        <adv-dropdown [options]="languages | sortBy: 'label' | drop: 'disabled'" (changeOption)=changeLanguage($event)>Language</adv-dropdown>
       </li>
       <li>
         <button (click)=closeSettings()>
@@ -23,5 +23,7 @@
     <h1 class="title">Hello, World!</h1>
     <adv-code-line code="test" title="GPG Key" />
   </section>
-  <adv-alert content="Hello, World!" [actions]=testAlert>Alert!</adv-alert>
+  <adv-alert title="Test Alert" [hidden]=false content="Hello, World!" [actions]=alertActions>Alert!</adv-alert>
+  <button (click)=openActionSheet()>ActionSheet</button>
+  <adv-action-sheet [actions]=actionSheetActions></adv-action-sheet>
 </main>

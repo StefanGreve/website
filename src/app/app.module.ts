@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
@@ -8,6 +8,11 @@ import { DialogComponent } from "./components/dialog/dialog.component";
 import { SwitchComponent } from "./components/switch/switch.component";
 import { DropdownComponent } from "./components/dropdown/dropdown.component";
 import { AlertComponent } from "./components/alert/alert.component";
+import { SortByPipe } from "./pipes/sort-by/sort-by.pipe";
+import { DropPipe } from "./pipes/drop/drop.pipe";
+import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
+import { appInitializerFactory } from "./app-initializer-factory";
+import { ThemeSwitcherService } from "./services/theme-switcher.service";
 
 @NgModule({
   declarations: [
@@ -15,14 +20,24 @@ import { AlertComponent } from "./components/alert/alert.component";
   ],
   imports: [
     AlertComponent,
+    ActionSheetComponent,
     BrowserModule,
     CodeLineComponent,
     SwitchComponent,
     DialogComponent,
     DropdownComponent,
     NavigationComponent,
+    SortByPipe,
+    DropPipe,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      useFactory: appInitializerFactory,
+      deps: [ThemeSwitcherService],
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

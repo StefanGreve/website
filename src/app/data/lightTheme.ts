@@ -1,7 +1,7 @@
 import { ThemeDefinition } from "../interfaces/theme";
 
 export const lightTheme: ThemeDefinition = {
-  name: "dark",
+  name: "light",
   // default colors
   neutralColor: "#0f172a",
   neutralColorMuted: "#6c757d",
