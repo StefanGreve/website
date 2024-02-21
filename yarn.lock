@@ -1611,10 +1611,10 @@
   dependencies:
     tslib "^2.2.0"
 
-"@ng-icons/material-icons@^26.2.0":
-  version "26.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-icons/material-icons/-/material-icons-26.2.0.tgz#160b88b206a837da7687c705a898a5b20d541fd9"
-  integrity sha512-a18pKZGXQZkZAQXiM38r4XtdSQxzewxJu0sCKKaeQM7BGkVhdwewe10NVQ1iBKlHYBj2RlBrgW65Gn1FoH9PPw==
+"@ng-icons/material-icons@^26.3.0":
+  version "26.3.0"
+  resolved "https://registry.yarnpkg.com/@ng-icons/material-icons/-/material-icons-26.3.0.tgz#8be38888e020318e20f45052a350d6ded13ec46e"
+  integrity sha512-9b7BRK2vrs0cJIC6IIWF1hYnXUVLms8joRW/YEmntMi05Dqe3+97zKe1pfNOp7Rbo6NWtBJpnCFbEnRt7nv5Sw==
   dependencies:
     tslib "^2.2.0"
 
