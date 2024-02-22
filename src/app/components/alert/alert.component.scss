@@ -1,6 +1,7 @@
 @use "../../styles/toolbox.scss" as tb;
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
+@use "../../styles/variables.scss" as var;
 
 div.adv-overlay {
   @include tb.overlay;
@@ -14,7 +15,7 @@ div.adv-alert {
   margin-top: -50px;
   width: 270px;
   text-align: center;
-  border-radius: 13px;
+  border-radius: var.$borderRadius;
   overflow: hidden;
   background-color: theme.$backgroundColor;
   z-index: 4;
