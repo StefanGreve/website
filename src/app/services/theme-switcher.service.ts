@@ -1,13 +1,18 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { darkTheme } from "../data/darkTheme";
 import { lightTheme } from "../data/lightTheme";
 import { Theme } from "../enums/theme";
 import { ThemeDefinition } from "../interfaces/theme";
+import { DOCUMENT } from "@angular/common";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeSwitcherService {
+  // dependency injection
+  private document = inject(DOCUMENT);
+
+  // public fields
   public readonly localStorageKey = "theme";
 
   public initialize() {
@@ -19,13 +24,13 @@ export class ThemeSwitcherService {
     const prevTheme = (theme === Theme.Light) ? "dark" : "light";
     const activeTheme = Theme[theme].toLowerCase();
 
-    document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
+    this.document.head.querySelectorAll<HTMLLinkElement>(`link[rel$="icon"]`).forEach(link => {
       link.setAttribute("href", link.href.replace(prevTheme, activeTheme));
     });
   }
 
   private createTheme(themeDefinition: ThemeDefinition): void {
-    const style = document.body.style;
+    const style = this.document.body.style;
 
     Object.keys(themeDefinition).forEach(key => {
       // Custom CSS properties (variables) require a double hyphen as leading
