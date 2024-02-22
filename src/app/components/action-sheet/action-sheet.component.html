@@ -1,13 +1,13 @@
 <div *ngIf="!class.hidden" class="adv-overlay"></div>
-<div *ngIf="!class.hidden" class="adv-action-sheet" [id]=id>
+<div *ngIf="!class.hidden" class="adv-action-sheet" [id]="id">
   <div class="adv-action-sheet-actions">
     @for (action of actions; track action) {
       <button
         *ngIf="!action.hidden"
         type="button"
-        [disabled]=action.disabled
+        [disabled]="action.disabled"
         [attr.data-state]="action.state ?? State.Default"
-        aria-label=action.label
+        [attr.aria-label]="action.label"
         (click)="action?.action()"
       >
         {{ action.label }}

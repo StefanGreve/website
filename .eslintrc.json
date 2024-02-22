@@ -92,7 +92,12 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {}
+      "plugins": [
+        "@angular-eslint/template"
+      ],
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error"
+      }
     }
   ]
 }

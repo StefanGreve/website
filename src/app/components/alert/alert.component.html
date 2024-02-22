@@ -1,5 +1,5 @@
 <div *ngIf="!hidden" class="adv-overlay"></div>
-<div *ngIf="!hidden" class="adv-alert" [id]=id>
+<div *ngIf="!hidden" class="adv-alert" [id]="id">
   <div class="adv-alert-body">
     <h2>
       {{ title }}
@@ -13,10 +13,10 @@
       <button
         *ngIf="!action.hidden"
         type="button"
-        [disabled]=action.disabled
+        [disabled]="action.disabled"
         [attr.data-state]="action.state ?? State.Default"
-        aria-label=action.label
-        (click)=action?.action()
+        [attr.aria-label]="action.label"
+        (click)="action?.action()"
       >
         {{ action.label }}
       </button>
