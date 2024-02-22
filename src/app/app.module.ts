@@ -13,6 +13,7 @@ import { DropPipe } from "./pipes/drop/drop.pipe";
 import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
 import { appInitializerFactory } from "./app-initializer-factory";
 import { ThemeSwitcherService } from "./services/theme-switcher.service";
+import { OverlayComponent } from "./components/overlay/overlay.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ThemeSwitcherService } from "./services/theme-switcher.service";
     DialogComponent,
     DropdownComponent,
     NavigationComponent,
+    OverlayComponent,
     SortByPipe,
     DropPipe,
   ],
