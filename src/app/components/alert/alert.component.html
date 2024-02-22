@@ -1,25 +1,26 @@
-<div *ngIf="!hidden" class="adv-overlay"></div>
-<div *ngIf="!hidden" class="adv-alert" [id]="id">
-  <div class="adv-alert-body">
-    <h2>
-      {{ title }}
-    </h2>
-    <p>
-      {{ content }}
-    </p>
+<adv-overlay [visible]="!hidden">
+  <div class="adv-alert" [id]="id">
+    <div class="adv-alert-body">
+      <h2>
+        {{ title }}
+      </h2>
+      <p>
+        {{ content }}
+      </p>
+    </div>
+    <div class="adv-alert-actions">
+      @for (action of actions; track action) {
+        <button
+          *ngIf="!action.hidden"
+          type="button"
+          [disabled]="action.disabled"
+          [attr.data-state]="action.state ?? State.Default"
+          [attr.aria-label]="action.label"
+          (click)="action?.action()"
+        >
+          {{ action.label }}
+        </button>
+      }
+    </div>
   </div>
-  <div class="adv-alert-actions">
-    @for (action of actions; track action) {
-      <button
-        *ngIf="!action.hidden"
-        type="button"
-        [disabled]="action.disabled"
-        [attr.data-state]="action.state ?? State.Default"
-        [attr.aria-label]="action.label"
-        (click)="action?.action()"
-      >
-        {{ action.label }}
-      </button>
-    }
-  </div>
-</div>
+</adv-overlay>

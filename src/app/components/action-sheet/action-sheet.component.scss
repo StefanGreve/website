@@ -3,10 +3,6 @@
 @use "../../styles/typography.scss" as typo;
 @use "../../styles/variables.scss" as var;
 
-div.adv-overlay {
-  @include tb.overlay;
-}
-
 @keyframes fly-in {
   0% {
     transform: translateY(100%);

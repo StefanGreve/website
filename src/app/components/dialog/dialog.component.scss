@@ -4,10 +4,6 @@
 @use "../../styles/typography.scss" as typo;
 @use "../../styles/variables.scss" as var;
 
-div.adv-overlay {
-  @include tb.overlay;
-}
-
 div.adv-dialog {
   position: fixed;
   top: 50%;

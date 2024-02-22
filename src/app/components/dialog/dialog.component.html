@@ -1,4 +1,5 @@
-<div *ngIf="!hidden" class="adv-overlay"></div>
-<div *ngIf="!hidden" class="adv-dialog">
-  <ng-content></ng-content>
-</div>
+<adv-overlay [visible]="!hidden">
+  <div class="adv-dialog">
+    <ng-content></ng-content>
+  </div>
+</adv-overlay>

@@ -4,13 +4,14 @@ import { TitleDirective } from "src/app/directives/inputs/title.directive";
 import { State } from "src/app/enums/state";
 import { Button } from "src/app/interfaces/button";
 import { v4 as uuid } from "uuid";
+import { OverlayComponent } from "../overlay/overlay.component";
 
 @Component({
   selector: "adv-alert",
   standalone: true,
   templateUrl: "./alert.component.html",
   styleUrl: "./alert.component.scss",
-  imports: [CommonModule],
+  imports: [CommonModule, OverlayComponent],
   hostDirectives: [
     {
       directive: TitleDirective,

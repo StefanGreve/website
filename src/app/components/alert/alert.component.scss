@@ -3,10 +3,6 @@
 @use "../../styles/typography.scss" as typo;
 @use "../../styles/variables.scss" as var;
 
-div.adv-overlay {
-  @include tb.overlay;
-}
-
 div.adv-alert {
   position: fixed;
   top: 40%;
@@ -18,11 +14,6 @@ div.adv-alert {
   border-radius: var.$borderRadius;
   overflow: hidden;
   background-color: theme.$backgroundColor;
-  z-index: 4;
-
-  * {
-    user-select: none;
-  }
 
   &-body {
     padding: 15px;
