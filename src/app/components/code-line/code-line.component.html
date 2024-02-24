@@ -3,11 +3,11 @@
     {{ code }}
   </span>
   <button
-    id="{{ id }}"
+    [id]="id"
     type="button"
-    title="{{ title }}"
+    [title]="title"
     (click)="onClickCopy()"
   >
-    <ng-icon class="icon" [name]=icon></ng-icon>
+    <ng-icon class="icon" [name]="icon"></ng-icon>
   </button>
 </div>

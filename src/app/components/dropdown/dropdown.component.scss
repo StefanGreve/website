@@ -1,6 +1,7 @@
 @use "../../styles/toolbox.scss" as tb;
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
+@use "../../styles/variables.scss" as var;
 
 div.adv-dropdown {
   display: flex;
@@ -41,7 +42,7 @@ div.adv-dropdown {
       list-style-type: none;
       min-width: 200px;
       padding-left: unset;
-      border-radius: 14px;
+      border-radius: var.$borderRadius;
 
       li.adv-selection {
         // overwrites dialog wrapper styles

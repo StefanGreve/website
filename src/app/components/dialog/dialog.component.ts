@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, ViewEncapsulation } from "@angular/core";
 import { v4 as uuid } from "uuid";
+import { OverlayComponent } from "../overlay/overlay.component";
 
 @Component({
   selector: "adv-dialog",
@@ -8,7 +9,7 @@ import { v4 as uuid } from "uuid";
   templateUrl: "./dialog.component.html",
   styleUrl: "./dialog.component.scss",
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule]
+  imports: [CommonModule, OverlayComponent]
 })
 export class DialogComponent {
   // public fields

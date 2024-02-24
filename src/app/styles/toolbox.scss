@@ -32,24 +32,23 @@
     width: stretch;
   }
 
-  margin-left: $margin-lr;
-  margin-right: $margin-lr;
+  margin: auto $margin-lr;
 
   @include bp.for-size(bp.$xs) {
     // offset mysterious surplus margin to the right
-    margin-right: calc(1em + $margin-lr - 16px);
+    margin: auto calc(1em + $margin-lr - 16px);
   }
 
   @include bp.for-size(bp.$sm) {
-    margin-right: calc(2.5em + $margin-lr);
+    margin: auto calc(2.5em + $margin-lr);
   }
 
   @include bp.for-size(bp.$md) {
-    margin-right: calc(6em + $margin-lr);
+    margin: auto calc(6em + $margin-lr);
   }
 
   @include bp.for-size(bp.$xl) {
-    margin-right: calc(20% + $margin-lr);
+    margin: auto calc(20% + $margin-lr);
   }
 }
 

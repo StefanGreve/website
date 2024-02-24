@@ -2,10 +2,7 @@
 @use "../../styles/toolbox.scss" as tb;
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
-
-div.adv-overlay {
-  @include tb.overlay;
-}
+@use "../../styles/variables.scss" as var;
 
 div.adv-dialog {
   position: fixed;
@@ -14,7 +11,7 @@ div.adv-dialog {
   transform: translate(-50%, -50%);
 
   border-width: 0;
-  border-radius: 12px;
+  border-radius: var.$borderRadius;
   background-color: theme.$backgroundColor;
   padding: 1em;
   z-index: 4;

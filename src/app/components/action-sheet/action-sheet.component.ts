@@ -3,11 +3,12 @@ import { CommonModule } from "@angular/common";
 import { Button } from "src/app/interfaces/button";
 import { v4 as uuid } from "uuid";
 import { State } from "src/app/enums/state";
+import { OverlayComponent } from "../overlay/overlay.component";
 
 @Component({
   selector: "adv-action-sheet",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OverlayComponent],
   templateUrl: "./action-sheet.component.html",
   styleUrl: "./action-sheet.component.scss",
 })

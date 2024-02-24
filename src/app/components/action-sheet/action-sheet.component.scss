@@ -1,10 +1,7 @@
 @use "../../styles/toolbox.scss" as tb;
 @use "../../styles/theme.scss" as theme;
 @use "../../styles/typography.scss" as typo;
-
-div.adv-overlay {
-  @include tb.overlay;
-}
+@use "../../styles/variables.scss" as var;
 
 @keyframes fly-in {
   0% {
@@ -14,8 +11,6 @@ div.adv-overlay {
     transform: translateY(0%);
   }
 }
-
-$borderRadius: 13px;
 
 div.adv-action-sheet {
   @include tb.center-content($margin-lr: 2em);
@@ -46,14 +41,14 @@ div.adv-action-sheet {
 
       // first custom action
       &:first-child {
-        border-top-left-radius: $borderRadius;
-        border-top-right-radius: $borderRadius;
+        border-top-left-radius: var.$borderRadius;
+        border-top-right-radius: var.$borderRadius;
       }
 
       // last custom action
       &:nth-last-child(2) {
-        border-bottom-left-radius: $borderRadius;
-        border-bottom-right-radius: $borderRadius;
+        border-bottom-left-radius: var.$borderRadius;
+        border-bottom-right-radius: var.$borderRadius;
         border-bottom: unset;
       }
 
@@ -61,7 +56,7 @@ div.adv-action-sheet {
       &:last-child {
         margin-top: 1.3em;
         font-weight: bold;
-        border-radius: $borderRadius;
+        border-radius: var.$borderRadius;
       }
 
       &:disabled {
