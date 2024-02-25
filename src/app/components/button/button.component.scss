@@ -1,0 +1,33 @@
+@use "../../styles/toolbox.scss" as tb;
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/variables.scss" as var;
+
+button.adv-button {
+  border-radius: calc(var.$borderRadius / 2);
+  border-width: 0;
+  font-size: 1rem;
+  line-height: 180%;
+  padding: 0.5em 1em;
+  cursor: pointer;
+
+  $accentColor: unset;
+
+  // normal
+  &[data-style="0"] {
+    background-color: theme.$backgroundColor;
+    color: $accentColor;
+    border: 1px solid $accentColor;
+  }
+
+  // primary
+  &[data-style="1"] {
+    background-color: $accentColor;
+    color: theme.$neutralColorAlt;
+  }
+
+  // flat
+  &[data-style="2"] {
+    background-color: transparent;
+    color: $accentColor;
+  }
+}

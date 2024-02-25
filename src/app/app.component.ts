@@ -117,6 +117,11 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  public actionSheetButton = {
+    label: "Open ActionSheet",
+    action: this.openActionSheet,
+  } as Button;
+
   public actionSheetActions: Button[] = [
     {
       label: "Option 1",

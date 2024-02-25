@@ -1,0 +1,13 @@
+<button
+  *ngIf="!action.hidden"
+  type="button"
+  [id]="id"
+  class="adv-button"
+  [disabled]="action.disabled"
+  [attr.data-state]="action.state ?? State.Default"
+  [attr.data-style]="role"
+  [attr.aria-label]="action.label"
+  (click)="action.action?.()"
+>
+  {{ action.label }}
+</button>
