@@ -10,7 +10,8 @@ button.adv-button {
   padding: 0.5em 1em;
   cursor: pointer;
 
-  $accentColor: unset;
+  // property set dynamically in component
+  $accentColor: var(--accent-color);
 
   // normal
   &[data-style="0"] {

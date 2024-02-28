@@ -120,6 +120,7 @@ export class AppComponent implements OnInit {
   public actionSheetButton = {
     label: "Open ActionSheet",
     action: this.openActionSheet,
+    state: State.Info,
   } as Button;
 
   public actionSheetActions: Button[] = [

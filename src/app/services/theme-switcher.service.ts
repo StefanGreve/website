@@ -64,4 +64,13 @@ export class ThemeSwitcherService {
   get getPreferredBrowserTheme(): Theme {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
   }
+
+  getThemeDefinition(theme: Theme | undefined = undefined): ThemeDefinition {
+    switch(theme ?? this.getActiveTheme) {
+      case Theme.Dark:
+        return darkTheme;
+      default:
+        return lightTheme;
+    }
+  }
 }

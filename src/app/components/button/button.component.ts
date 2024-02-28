@@ -1,34 +1,34 @@
-import { CommonModule, DOCUMENT } from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit, inject } from "@angular/core";
 import { v4 as uuid } from "uuid";
-import { State } from "src/app/enums/state";
 import { Role } from "src/app/enums/role";
 import { Button } from "src/app/interfaces/button";
+import { ThemeSwitcherService } from "src/app/services/theme-switcher.service";
+import { Utils } from "src/app/lib/utils";
 
 @Component({
   selector: "adv-button",
   standalone: true,
   imports: [CommonModule],
   templateUrl: "./button.component.html",
-  styleUrl: "./button.component.scss"
+  styleUrl: "./button.component.scss",
 })
 export class ButtonComponent implements OnInit {
   // dependency injection
-  private document = inject(DOCUMENT);
+  private themeSwitcherService = inject(ThemeSwitcherService);
 
   // public fields
-  public State = State;
   public readonly id: string = `adv__button__${uuid()}`;
+  public accentColor: string | undefined;
 
   @Input({required: true})
   public action!: Button;
 
   @Input()
-  public role: Role = Role.Normal;
+  public role: Role = Role.Primary;
 
   ngOnInit(): void {
-      // TODO: store state in color variable
-      const button = this.document.getElementById(this.id);
-      button?.style.setProperty("color", "blue");
+    const themeDefinition = this.themeSwitcherService.getThemeDefinition();
+    this.accentColor = Utils.mapStateToColor(this.action.state, themeDefinition);
   }
 }
