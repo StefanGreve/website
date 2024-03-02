@@ -5,10 +5,24 @@
 button.adv-button {
   border-radius: calc(var.$borderRadius / 2);
   border-width: 0;
-  font-size: 1rem;
-  line-height: 180%;
+  line-height: 160%;
   padding: 0.5em 1em;
   cursor: pointer;
+
+  // small
+  &[data-size="0"] {
+    font-size: 0.8rem;
+  }
+
+  // medium
+  &[data-size="1"] {
+    font-size: 1rem;
+  }
+
+  // large
+  &[data-size="2"] {
+    font-size: 1.2rem;
+  }
 
   // property set dynamically in component
   $accentColor: var(--accent-color);
@@ -24,6 +38,10 @@ button.adv-button {
   &[data-style="1"] {
     background-color: $accentColor;
     color: theme.$neutralColorAlt;
+
+    &:hover {
+      filter: brightness(120%);
+    }
   }
 
   // flat

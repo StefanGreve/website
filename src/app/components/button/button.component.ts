@@ -5,6 +5,7 @@ import { Role } from "src/app/enums/role";
 import { Button } from "src/app/interfaces/button";
 import { ThemeSwitcherService } from "src/app/services/theme-switcher.service";
 import { Utils } from "src/app/lib/utils";
+import { Size } from "src/app/enums/size";
 
 @Component({
   selector: "adv-button",
@@ -26,6 +27,9 @@ export class ButtonComponent implements OnInit {
 
   @Input()
   public role: Role = Role.Primary;
+
+  @Input()
+  public size: Size = Size.Medium;
 
   ngOnInit(): void {
     const themeDefinition = this.themeSwitcherService.getThemeDefinition();

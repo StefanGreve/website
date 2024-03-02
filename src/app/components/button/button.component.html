@@ -6,6 +6,7 @@
   [ngStyle]="{ '--accent-color': accentColor }"
   [disabled]="action.disabled"
   [attr.data-style]="role"
+  [attr.data-size]="size"
   [attr.aria-label]="action.label"
   (click)="action.action?.()"
 >
