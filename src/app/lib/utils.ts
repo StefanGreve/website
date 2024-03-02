@@ -1,5 +1,5 @@
 import { State } from "../enums/state";
-import { ThemeDefinition } from "../interfaces/theme";
+import { ThemeDefinition } from "../interfaces/theme-definition";
 
 export class Utils {
   public static delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

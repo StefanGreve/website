@@ -9,6 +9,10 @@ button.adv-button {
   padding: 0.5em 1em;
   cursor: pointer;
 
+  &:disabled {
+    @include tb.disabled;
+  }
+
   // small
   &[data-size="0"] {
     font-size: 0.8rem;
@@ -39,7 +43,7 @@ button.adv-button {
     background-color: $accentColor;
     color: theme.$neutralColorAlt;
 
-    &:hover {
+    &:not(:disabled):hover {
       filter: brightness(120%);
     }
   }

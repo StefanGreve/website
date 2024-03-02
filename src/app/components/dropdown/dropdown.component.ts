@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output, inject } from "@angular
 import { CommonModule } from "@angular/common";
 import { Item } from "src/app/interfaces/item";
 import { v4 as uuid } from "uuid";
-import { NgIconComponent, provideIcons } from "@ng-icons/core";
-import { matKeyboardArrowDownOutline } from "@ng-icons/material-icons/outline";
+import { NgIconComponent } from "@ng-icons/core";
 import { ClickedOutsideDirective } from "src/app/directives/clicked-outside.directive";
 import { HiddenDirective } from "src/app/directives/inputs/hidden.directive";
 import { DisabledDirective } from "src/app/directives/inputs/disabled.directive";
+import { IconOutlineDirective } from "src/app/directives/icon-outlined.directive";
 
 @Component({
   selector: "adv-dropdown",
@@ -14,8 +14,10 @@ import { DisabledDirective } from "src/app/directives/inputs/disabled.directive"
   imports: [CommonModule, NgIconComponent, ClickedOutsideDirective],
   templateUrl: "./dropdown.component.html",
   styleUrl: "./dropdown.component.scss",
-  viewProviders: [provideIcons({ matKeyboardArrowDownOutline })],
   hostDirectives: [
+    {
+      directive: IconOutlineDirective,
+    },
     {
       directive: HiddenDirective,
       inputs: ["hidden"],
@@ -30,6 +32,7 @@ export class DropdownComponent implements OnInit {
   // dependency injection
   private hiddenDirective = inject(HiddenDirective);
   private disabledDirective = inject(DisabledDirective);
+  private iconOutlineDirective = inject(IconOutlineDirective);
 
   // directive inputs
   public hidden: boolean | undefined;
@@ -43,7 +46,7 @@ export class DropdownComponent implements OnInit {
 
   // public fields
   public readonly id: string = `adv__dropdown__${uuid()}`;
-  public readonly icon: string = "matKeyboardArrowDownOutline";
+  public readonly icon: string = this.iconOutlineDirective.ICONS.ArrowDown;
   public selectedOption: string | undefined;
   public isOpened = false;
 

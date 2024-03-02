@@ -2,7 +2,7 @@ import { Injectable, inject } from "@angular/core";
 import { darkTheme } from "../data/darkTheme";
 import { lightTheme } from "../data/lightTheme";
 import { Theme } from "../enums/theme";
-import { ThemeDefinition } from "../interfaces/theme";
+import { ThemeDefinition } from "../interfaces/theme-definition";
 import { DOCUMENT } from "@angular/common";
 
 @Injectable({
@@ -56,16 +56,16 @@ export class ThemeSwitcherService {
     this.setIcon(theme);
   }
 
-  get getActiveTheme(): Theme {
+  public get getActiveTheme(): Theme {
     const activeTheme: string = localStorage.getItem(this.localStorageKey) || Theme[this.getPreferredBrowserTheme];
     return Theme[activeTheme as keyof typeof Theme];
   }
 
-  get getPreferredBrowserTheme(): Theme {
+  public get getPreferredBrowserTheme(): Theme {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
   }
 
-  getThemeDefinition(theme: Theme | undefined = undefined): ThemeDefinition {
+  public getThemeDefinition(theme: Theme | undefined = undefined): ThemeDefinition {
     switch(theme ?? this.getActiveTheme) {
       case Theme.Dark:
         return darkTheme;

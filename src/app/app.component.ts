@@ -8,6 +8,7 @@ import { Button } from "./interfaces/button";
 import { State } from "./enums/state";
 import { AlertComponent } from "./components/alert/alert.component";
 import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
+import { Icon } from "./enums/icon";
 
 @Component({
   selector: "adv-root",
@@ -18,7 +19,9 @@ export class AppComponent implements OnInit {
   // dependency injection
   private themeSwitcherService = inject(ThemeSwitcherService);
 
+  // public fields
   public isDarkThemeEnabled = false;
+  public Icon = Icon;
 
   public languages: Item[] = [
     {
