@@ -10,6 +10,6 @@
   [attr.aria-label]="action.label"
   (click)="action.action?.()"
 >
-  <ng-icon *ngIf="icon !== undefined" [name]="actionIcon!"></ng-icon>
   {{ action.label }}
+  <ng-icon *ngIf="icon !== undefined" [name]="actionIcon!"></ng-icon>
 </button>

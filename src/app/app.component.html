@@ -13,9 +13,7 @@
         <adv-dropdown [options]="languages | sortBy: 'label' | drop: 'disabled'" (changeOption)="changeLanguage($event)">Language</adv-dropdown>
       </li>
       <li>
-        <button (click)="closeSettings()">
-          Close
-        </button>
+        <adv-button [action]="closeSettingsButton" [role]="Role.Flat"></adv-button>
       </li>
     </ul>
   </adv-dialog>
