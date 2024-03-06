@@ -13,9 +13,7 @@
         <adv-dropdown [options]="languages | sortBy: 'label' | drop: 'disabled'" (changeOption)="changeLanguage($event)">Language</adv-dropdown>
       </li>
       <li>
-        <button (click)="closeSettings()">
-          Close
-        </button>
+        <adv-button [action]="closeSettingsButton" [role]="Role.Flat"></adv-button>
       </li>
     </ul>
   </adv-dialog>
@@ -24,6 +22,6 @@
     <adv-code-line code="test" title="GPG Key" />
   </section>
   <adv-alert title="Test Alert" [hidden]="false" content="Hello, World!" [actions]="alertActions">Alert!</adv-alert>
-  <button (click)="openActionSheet()">ActionSheet</button>
+  <adv-button [action]="actionSheetButton" [icon]="Icon.ArrowDown"></adv-button>
   <adv-action-sheet [actions]="actionSheetActions"></adv-action-sheet>
 </main>

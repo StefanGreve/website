@@ -1,0 +1,56 @@
+@use "../../styles/toolbox.scss" as tb;
+@use "../../styles/theme.scss" as theme;
+@use "../../styles/variables.scss" as var;
+
+button.adv-button {
+  border-radius: calc(var.$borderRadius / 2);
+  border-width: 0;
+  line-height: 140%;
+  padding: 0.5em 1em;
+  cursor: pointer;
+
+  &:disabled {
+    @include tb.disabled;
+  }
+
+  // small
+  &[data-size="0"] {
+    font-size: 0.8rem;
+  }
+
+  // medium
+  &[data-size="1"] {
+    font-size: 1rem;
+  }
+
+  // large
+  &[data-size="2"] {
+    font-size: 1.2rem;
+  }
+
+  // property set dynamically in component
+  $accentColor: var(--accent-color);
+
+  // normal
+  &[data-style="0"] {
+    background-color: theme.$backgroundColor;
+    color: $accentColor;
+    border: 1px solid $accentColor;
+  }
+
+  // primary
+  &[data-style="1"] {
+    background-color: $accentColor;
+    color: theme.$neutralColorAlt;
+
+    &:not(:disabled):hover {
+      filter: brightness(120%);
+    }
+  }
+
+  // flat
+  &[data-style="2"] {
+    background-color: transparent;
+    color: $accentColor;
+  }
+}

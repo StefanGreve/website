@@ -8,6 +8,8 @@ import { Button } from "./interfaces/button";
 import { State } from "./enums/state";
 import { AlertComponent } from "./components/alert/alert.component";
 import { ActionSheetComponent } from "./components/action-sheet/action-sheet.component";
+import { Icon } from "./enums/icon";
+import { Role } from "./enums/role";
 
 @Component({
   selector: "adv-root",
@@ -18,7 +20,10 @@ export class AppComponent implements OnInit {
   // dependency injection
   private themeSwitcherService = inject(ThemeSwitcherService);
 
+  // public fields
   public isDarkThemeEnabled = false;
+  public readonly Icon = Icon;
+  public readonly Role = Role;
 
   public languages: Item[] = [
     {
@@ -116,6 +121,17 @@ export class AppComponent implements OnInit {
       disabled: true,
     },
   ];
+
+  public closeSettingsButton = {
+    label: "Close",
+    action: this.closeSettings
+  } as Button;
+
+  public actionSheetButton = {
+    label: "Open ActionSheet",
+    action: this.openActionSheet,
+    state: State.Info,
+  } as Button;
 
   public actionSheetActions: Button[] = [
     {

@@ -14,6 +14,7 @@ import { ActionSheetComponent } from "./components/action-sheet/action-sheet.com
 import { appInitializerFactory } from "./app-initializer-factory";
 import { ThemeSwitcherService } from "./services/theme-switcher.service";
 import { OverlayComponent } from "./components/overlay/overlay.component";
+import { ButtonComponent } from "./components/button/button.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OverlayComponent } from "./components/overlay/overlay.component";
     AlertComponent,
     ActionSheetComponent,
     BrowserModule,
+    ButtonComponent,
     CodeLineComponent,
     SwitchComponent,
     DialogComponent,

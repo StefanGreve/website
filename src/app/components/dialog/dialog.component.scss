@@ -70,15 +70,7 @@ div.adv-dialog {
       }
 
       button {
-        all: unset;
-        color: theme.$infoColor;
-        user-select: none;
-        cursor: pointer;
-      }
-
-      & * {
-        @include typo.p;
-        line-height: unset;
+        padding-left: unset;
       }
     }
   }
