@@ -1,6 +1,6 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# https://docs.github.com/get-started/getting-started-with-git/ignoring-files
 
-# Compiled output
+# Generated Files
 /dist
 /tmp
 /out-tsc
@@ -8,10 +8,12 @@
 
 # Node
 /node_modules
+
+# Log Files
 npm-debug.log
 yarn-error.log
 
-# IDEs and editors
+# IDEs & Editors
 .idea/
 .project
 .classpath
@@ -20,7 +22,7 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
+# VSC
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -37,6 +39,6 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
+# OS Files
 .DS_Store
 Thumbs.db
