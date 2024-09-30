@@ -1,3 +1,2 @@
-git config core.autocrlf false
 npm run pretty-quick
 npm run lint
