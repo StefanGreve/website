@@ -1,0 +1,30 @@
+[data-theme="dark"] {
+  // Default Colors
+  --neutral-color: "#fafafa";
+  --neutral-color-muted: "#8a9198";
+  --neutral-color-alt: "#1b1b1b";
+
+  // Accent colors
+  --primary-color: "#393a8b";
+  --on-primary-color: "#fafafa";
+  --secondary-color: "#fafafa";
+  --on-secondary-color: "#1b1b1b";
+
+  // Building Colors
+  --background-color: "#1b1b1b";
+  --on-background-color: "#fafafa";
+  --surface-color: "#262626";
+  --on-surface-color: "#fafafa";
+
+  // Status Colors
+  --success-color: "#30d158";
+  --info-color: "#0a84ff";
+  --warning-color: "#ffd60a";
+  --error-color: "#ff453a";
+
+  // Misc Colors
+  --scrollbar-color: "#4c4c4c";
+  --scrollbar-track: "#ffffff";
+  --background-border: "#262626";
+  --surface-border: "#000";
+}
