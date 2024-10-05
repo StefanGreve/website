@@ -1,11 +1,32 @@
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
+import { NavigationComponent } from "./components/core/navigation/navigation.component";
+import { NavigationItem } from "./interfaces/navigation-item";
 
 @Component({
-  selector: "app-root",
+  selector: "adv-root",
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [NavigationComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })
-export class AppComponent {}
+export class AppComponent {
+  public items: NavigationItem[] = [
+    {
+      label: "Login",
+      href: "#",
+      disabled: true,
+    },
+    {
+      label: "Archive",
+      href: "https://archive.stefangreve.com/",
+      external: true,
+    },
+    {
+      label: "Alert",
+      hidden: false,
+    },
+    {
+      label: "Settings",
+    },
+  ];
+}
