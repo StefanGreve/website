@@ -16,7 +16,7 @@ describe("NavigationComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it("should create a new instance", () => {
     expect(component).toBeTruthy();
   });
 });
